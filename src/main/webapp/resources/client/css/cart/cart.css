@@ -1,0 +1,410 @@
+@charset "UTF-8";
+:root {
+  --dark-color: #31393C;
+  --medium-color: #D5B9B2;
+  --medium-light-color: #BFB5AF;
+  --light-color: #fff5e3;
+  --hight-light-text: #ef4444;
+  --font-family-display: "Playfair Display", serif, Arial, sans-serif;
+  --font-family-desc: "Hind Mysuru", sans-serif;
+  --light-text: #ffffff;
+  --highlight-text: #4D8B55;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family-desc);
+}
+
+.width-container {
+  width: min(90%, 1400px) !important;
+  margin: auto;
+}
+
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+}
+
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: white;
+  content: "// ";
+}
+
+ul.breadcrumb li a {
+  color: var(--highlight-text);
+  text-decoration: none;
+  transition: 0.3s all;
+  font-size: 15px;
+  font-weight: bolder;
+  filter: contrast(250%) !important;
+}
+
+.current-breadcrumb {
+  color: var(--light-text) !important;
+}
+
+ul.breadcrumb li a:hover {
+  color: var(--light-text);
+}
+
+.swiper-container {
+  height: 600px;
+}
+.swiper-container .swiper-pagination-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), var(--bg-url);
+  background-size: cover;
+  background-position: end;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 70vh;
+}
+.swiper-container .swiper-pagination-container h2 {
+  font-family: var(--font-family-desc);
+  font-size: 3.2rem;
+  color: var(--light-text);
+  font-weight: 800;
+  margin-top: 7rem;
+  filter: contrast(150%) !important;
+}
+
+.cart-table-container .cart-table-wrapper form {
+  background: transparent;
+  padding: 0;
+  text-align: start;
+  position: relative;
+}
+.cart-table-container .cart-table-wrapper form .c-table {
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  border-spacing: 0px;
+}
+.cart-table-container .cart-table-wrapper form .c-table thead th {
+  background-color: #000;
+  color: var(--light-text);
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: none;
+  padding: 20px 28px;
+}
+.cart-table-container .cart-table-wrapper form .c-table thead th.product-name {
+  text-align: start;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item td {
+  vertical-align: middle;
+  padding: 20px 24px !important;
+  font-family: var(--font-family-desc);
+  font-size: 18px;
+  color: #000;
+  font-weight: bolder;
+  border: 1px solid #e5e7eb;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-remove {
+  border-right: none;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-remove a {
+  text-decoration: none;
+  color: var(--hight-light-text);
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-thumbnail {
+  border-left: none;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-thumbnail img {
+  width: 54px !important;
+  height: auto;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-name {
+  text-align: start;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-name a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bolder;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-quantity {
+  padding: 20px 20px !important;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-quantity input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--dark-color);
+  font-size: 20px;
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-price {
+  color: var(--highlight-text);
+}
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-price span,
+.cart-table-container .cart-table-wrapper form .c-table tbody .cart-item .product-subtotal span {
+  font-family: var(--font-family-desc);
+}
+
+.cart-sum-container {
+  margin: 5rem auto;
+  font-family: var(--font-family-desc);
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table span {
+  font-family: var(--font-family-desc);
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table th,
+.cart-sum-container .cart-sum-wrapper .c-sum-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table th {
+  text-transform: uppercase;
+  padding: 20px 32px;
+  width: 35%;
+  text-align: end;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table td {
+  vertical-align: top;
+  text-align: end;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table td span {
+  font-weight: bold;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table td p {
+  margin: 5px 0;
+  line-height: 1.6;
+  font-family: var(--font-family-desc);
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table td p:first-child {
+  font-family: var(--font-family-desc);
+  font-size: 12px;
+  color: var(--dark-color);
+  font-weight: normal;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table td p:first-child span {
+  font-family: var(--font-family-desc);
+  font-size: 14px;
+  font-weight: bolder;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table td h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+  transition: 0.4s all;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table td h3 i {
+  margin-left: 5px;
+  font-size: 1rem;
+}
+.cart-sum-container .cart-sum-wrapper .c-sum-table td h3:hover {
+  color: var(--highlight-text);
+}
+
+.cart-checkout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-checkout a {
+  text-decoration: none;
+  font-family: var(--font-family-desc);
+  font-size: 20px;
+  color: var(--light-text);
+  font-weight: bolder;
+  background-color: var(--highlight-text);
+  padding: 15px 40px;
+  padding-bottom: 10px;
+  border-radius: 35px;
+  transition: 0.4s all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-checkout a:hover {
+  background-color: #000;
+}
+
+.cart-bill-container .cart-bill-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  flex-basis: 50%;
+  font-family: var(--font-family-desc);
+}
+.cart-bill-container .cart-bill-wrapper .bill-header {
+  font-family: var(--font-family-desc);
+  font-size: 2.5rem;
+  color: black;
+  font-weight: bolder;
+  margin: 48px 0 16px;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details {
+  flex: 50%;
+  padding-right: 1.5vw;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details .input-text,
+.cart-bill-container .cart-bill-wrapper .billing-details select,
+.cart-bill-container .cart-bill-wrapper .billing-details textarea {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 26px 25px;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  border-radius: 48px;
+  background-clip: border-box;
+  transition: all 0.2s ease;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details label {
+  margin-bottom: 2px;
+  line-height: 2;
+  font-family: var(--font-family-desc);
+}
+.cart-bill-container .cart-bill-wrapper .billing-details label .bill-important {
+  color: #e11d48;
+  font-weight: bolder;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details .form-info div {
+  margin-bottom: 20px;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details .form-info textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 12em;
+  line-height: 1.5;
+  display: block;
+  margin: 0;
+  outline: 0;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details .name-row {
+  display: flex;
+  gap: 20px;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details .name-row .f-name,
+.cart-bill-container .cart-bill-wrapper .billing-details .name-row .l-name {
+  flex: 1;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details .name-row .f-name label,
+.cart-bill-container .cart-bill-wrapper .billing-details .name-row .l-name label {
+  display: block;
+  margin-bottom: 5px;
+}
+.cart-bill-container .cart-bill-wrapper .billing-details .name-row .f-name input,
+.cart-bill-container .cart-bill-wrapper .billing-details .name-row .l-name input {
+  width: 100%;
+}
+.cart-bill-container .cart-bill-wrapper .order-details {
+  flex: 50%;
+  padding-left: 1.5vw;
+}
+.cart-bill-container .cart-bill-wrapper .order-details table {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.cart-bill-container .cart-bill-wrapper .order-details table td {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.cart-bill-container .cart-bill-wrapper .order-details table span {
+  font-family: var(--font-family-desc);
+  font-weight: bolder;
+}
+.cart-bill-container .cart-bill-wrapper .order-details table tbody td:first-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.5px;
+  width: 32%;
+  line-height: 1.15;
+}
+.cart-bill-container .cart-bill-wrapper .order-details table tbody td {
+  padding: 20px 24px;
+  font-family: var(--font-family-desc);
+  font-size: 18px;
+  color: black;
+  font-weight: bolder;
+}
+.cart-bill-container .cart-bill-wrapper .order-details table tbody tr:last-child td {
+  border-bottom: 3px solid #000;
+}
+.cart-bill-container .cart-bill-wrapper .order-details table tfoot th {
+  font-family: var(--font-family-desc);
+  font-size: 18px;
+  color: black;
+  font-weight: bolder;
+  text-align: right;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.cart-bill-container .cart-bill-wrapper .order-details table tfoot th,
+.cart-bill-container .cart-bill-wrapper .order-details table tfoot td {
+  padding: 20px 24px;
+}
+.cart-bill-container .cart-bill-wrapper .order-details table tfoot td:nth-child(2) {
+  text-align: start;
+  font-family: var(--font-family-desc);
+  font-size: 14px;
+  color: black;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.cart-bill-container .cart-bill-wrapper .order-details table tfoot td:nth-child(2) span {
+  font-size: 18px;
+}
+.cart-bill-container .cart-bill-wrapper .order-details .privacy {
+  margin: 30px auto;
+  background-color: #EFECE5;
+  padding: 20px;
+}
+.cart-bill-container .cart-bill-wrapper .order-details .privacy p {
+  font-family: var(--font-family-desc);
+  font-size: 15px;
+  color: black;
+  font-weight: normal;
+}
+.cart-bill-container .cart-bill-wrapper .order-details .form-btn {
+  display: block;
+  margin: 30px auto 0;
+  border-radius: 48px !important;
+  font-size: 16px;
+  padding-top: 25px;
+  padding-bottom: 22px;
+  min-width: 300px;
+  font-weight: 700;
+  background-color: var(--highlight-text);
+  font-family: var(--font-family-desc);
+  font-size: 18px;
+  color: var(--light-text);
+  font-weight: bolder;
+  box-sizing: border-box;
+  float: none !important;
+  transition: 0.4s all;
+}
+.cart-bill-container .cart-bill-wrapper .order-details .form-btn:hover {
+  background-color: #000;
+}/*# sourceMappingURL=cart.css.map */

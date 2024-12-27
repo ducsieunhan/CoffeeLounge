@@ -1,0 +1,104 @@
+:root {
+  --dark-color: #31393C;
+  --medium-color: #D5B9B2;
+  --medium-light-color: #BFB5AF;
+  --light-color: #fff5e3;
+  --hight-light-text: #ef4444;
+  --font-family-display: "Playfair Display", serif, Arial, sans-serif;
+  --font-family-desc: "Hind Mysuru", sans-serif;
+  --light-text: #ffffff;
+  --highlight-text: #4D8B55;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family-desc);
+}
+
+.width-container {
+  width: min(90%, 1400px) !important;
+  margin: auto;
+}
+
+.register-section .register-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.register-section .register-wrapper h2 {
+  font-size: 4rem;
+}
+.register-section .register-wrapper .register-form {
+  width: 100%;
+  border: 1px solid #ced6d8;
+  padding: 20px 20px;
+  border-radius: 10px;
+}
+.register-section .register-wrapper .register-form .input-text,
+.register-section .register-wrapper .register-form select,
+.register-section .register-wrapper .register-form textarea {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 26px 25px;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  border-radius: 48px;
+  background-clip: border-box;
+  transition: all 0.2s ease;
+}
+.register-section .register-wrapper .register-form label {
+  margin-bottom: 2px;
+  line-height: 2;
+  font-family: var(--font-family-desc);
+  font-weight: normal;
+}
+.register-section .register-wrapper .register-form label .bill-important {
+  color: #e11d48;
+  font-weight: bolder;
+}
+.register-section .register-wrapper .register-form .form-group {
+  text-align: start;
+  position: relative !important;
+}
+.register-section .register-wrapper .register-form .form-group .check-pass {
+  cursor: pointer;
+}
+.register-section .register-wrapper .register-form div {
+  margin-bottom: 20px;
+}
+.register-section .register-wrapper .register-form .submit-btn {
+  width: 200px;
+  height: 60px;
+  background-color: #4D8B55;
+  color: var(--light-text);
+  font-size: 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px auto;
+  transition: 0.2s all;
+  margin-bottom: 1rem;
+  border: none;
+}
+.register-section .register-wrapper .register-form .submit-btn:hover {
+  background-color: #000000;
+}
+.register-section .register-wrapper .register-form .haveAccount {
+  text-decoration: none;
+  color: #000000;
+  transition: 0.2s all;
+}
+.register-section .register-wrapper .register-form .haveAccount:hover {
+  color: #4D8B55;
+}/*# sourceMappingURL=starter.css.map */

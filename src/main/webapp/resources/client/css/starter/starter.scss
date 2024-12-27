@@ -1,0 +1,137 @@
+:root {
+    --dark-color: #31393C;
+    --medium-color: #D5B9B2;
+    --medium-light-color: #BFB5AF;
+    --light-color: #fff5e3;
+    --hight-light-text: #ef4444;
+    --font-family-display: "Playfair Display", serif, Arial, sans-serif;
+    --font-family-desc: "Hind Mysuru", sans-serif;
+    --light-text: #ffffff;
+    --highlight-text: #4D8B55;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family-desc);
+}
+
+.width-container {
+    width: min(90%, 1400px) !important;
+    margin: auto;
+}
+
+@mixin flex-container($direction: column, $align: center, $justify: center, $gap: null) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+
+    @if $gap !=null {
+        gap: $gap;
+    }
+}
+
+@mixin font-adjust($font: var(--font-family-desc), $size: 18px, $color: black, $weight: normal) {
+    font-family: $font;
+    font-size: $size;
+    color: $color;
+    font-weight: $weight;
+}
+
+
+.register-section {
+    .register-wrapper {
+        @include flex-container($align: start);
+
+        h2 {
+            font-size: 4rem;
+        }
+
+        .register-form {
+            width: 100%;
+            border: 1px solid #ced6d8;
+            padding: 20px 20px;
+            border-radius: 10px;
+
+            .input-text,
+            select,
+            textarea {
+                width: 100%;
+                display: block;
+                margin: 0 auto;
+                font-size: 16px;
+                padding: 26px 25px;
+                color: #000000;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                background-clip: padding-box;
+                box-shadow: none !important;
+                -webkit-appearance: none;
+                -webkit-border-radius: 48px;
+                -moz-border-radius: 48px;
+                border-radius: 48px;
+                background-clip: border-box;
+                transition: all 0.2s ease;
+            }
+
+            label {
+                margin-bottom: 2px;
+                line-height: 2;
+                font-family: var(--font-family-desc);
+                font-weight: normal;
+
+                .bill-important {
+                    // color: var(--hight-light-text);
+                    color: #e11d48;
+                    font-weight: bolder;
+                }
+            }
+
+            .form-group {
+                text-align: start;
+                position: relative !important;
+
+                .check-pass {
+                    cursor: pointer;
+                }
+            }
+
+            div {
+                margin-bottom: 20px;
+
+            }
+
+            .submit-btn {
+                width: 200px;
+                height: 60px;
+                background-color: #4D8B55;
+                color: var(--light-text);
+                font-size: 20px;
+                border-radius: 50px;
+                font-weight: bold;
+                @include flex-container();
+                margin: 0px auto;
+                transition: 0.2s all;
+                margin-bottom: 1rem;
+                border: none;
+
+                &:hover {
+                    background-color: #000000;
+                }
+            }
+
+            .haveAccount {
+                text-decoration: none;
+                color: #000000;
+                transition: 0.2s all;
+
+                &:hover {
+                    color: #4D8B55;
+                }
+            }
+        }
+
+    }
+}
