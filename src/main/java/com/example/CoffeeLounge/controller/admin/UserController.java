@@ -2,9 +2,11 @@ package com.example.CoffeeLounge.controller.admin;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +22,11 @@ import jakarta.validation.Valid;
 public class UserController {
 
     private UserService userService;
+    private PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/admin/user")
@@ -59,6 +63,7 @@ public class UserController {
         User user = this.userService.getById(ducsieunhan.getId());
         user.setFullName(ducsieunhan.getFullName());
         user.setPhone(ducsieunhan.getPhone());
+        user.setRole(this.userService.getRoleByName(ducsieunhan.getRole().getName()));
         this.userService.handleSaveUser(user);
 
         return "redirect:/admin/user";
@@ -78,6 +83,34 @@ public class UserController {
     public String deleteUser(@ModelAttribute("deleteUser") User ducsieunhan) {
 
         this.userService.deleteById(ducsieunhan.getId());
+
+        return "redirect:/admin/user";
+    }
+
+    @GetMapping("/admin/user/create")
+    public String getCreateUserPage(Model model) {
+        model.addAttribute("newUser", new User());
+        return "admin/user/create";
+    }
+
+    @PostMapping("/admin/user/create")
+    public String postCreateNewUser(@ModelAttribute("newUser") @Valid User ducsieunhan,
+            BindingResult newUseBindingResult) {
+
+        List<FieldError> errors = newUseBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(error.getField() + " - " + error.getDefaultMessage());
+        }
+
+        if (newUseBindingResult.hasErrors()) {
+            return "admin/user/create";
+        }
+
+        ducsieunhan.setRole(this.userService.getRoleByName(ducsieunhan.getRole().getName()));
+
+        ducsieunhan.setPassword(passwordEncoder.encode(ducsieunhan.getPassword()));
+
+        this.userService.handleSaveUser(ducsieunhan);
 
         return "redirect:/admin/user";
     }

@@ -77,7 +77,7 @@
   overflow: visible;
 }
 .swiper-container .background-leaf .coffee-image {
-  background-image: url(/frontend/images/products/leaves_pattern_010.png);
+  background-image: url(/client/images/products/leaves_pattern_010.png);
   background-color: #4D8B55;
   display: flex;
   justify-content: center;
@@ -500,7 +500,7 @@
 }
 .quality-container .quality-wrapper .quality-desc {
   text-align: center;
-  background-image: url(/frontend/images/homepage/grow-cat-bg.png);
+  background-image: url(/client/images/homepage/grow-cat-bg.png);
   background-position: center center;
   background-repeat: no-repeat;
   padding: 80px 0px 120px 0px;
@@ -681,10 +681,10 @@
   /* Zoom nhẹ khi hover */
 }
 .together-container .together-wrapper .together-img-1 {
-  background-image: url(/frontend/images/homepage/Helena-Coffee-Beans-01-1.jpg);
+  background-image: url(/client/images/homepage/Helena-Coffee-Beans-01-1.jpg);
 }
 .together-container .together-wrapper .together-img-2 {
-  background-image: url(/frontend/images/homepage/Helena-Coffee.jpg);
+  background-image: url(/client/images/homepage/Helena-Coffee.jpg);
   padding: 0;
   margin: 0;
 }
@@ -762,7 +762,7 @@
   margin-bottom: 7rem;
 }
 .video-container .video-wrapper .video-watch {
-  background-image: url(/frontend/images/homepage/grow-video-bg.jpg);
+  background-image: url(/client/images/homepage/grow-video-bg.jpg);
   width: 100%;
   background-size: cover;
   height: 140vh;
@@ -822,7 +822,7 @@
   background-color: #000;
 }
 .video-container .video-wrapper .video-statistic {
-  background-image: url("/frontend/images/homepage/green_parallax.jpg");
+  background-image: url("/client/images/homepage/green_parallax.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

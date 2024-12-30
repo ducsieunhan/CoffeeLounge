@@ -4,7 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "products")
@@ -14,13 +20,27 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "You must input the product name!!!")
+    @Size(max = 100, message = "The product name cannot exceed 100 characters.")
     private String name;
+
+    @NotNull(message = "You must input the product price!!!")
     private double price;
     private String image;
     private String detailDesc;
     private String shortDesc;
+
+    @NotNull(message = "You must input the product quantity!!!")
     private long quantity;
     private long sold;
+
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public long getId() {
         return id;
@@ -86,16 +106,27 @@ public class Product {
         this.sold = sold;
     }
 
-    public Product(long id, String name, double price, String image, String detailDesc, String shortDesc, long quantity,
-            long sold) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.image = image;
-        this.detailDesc = detailDesc;
-        this.shortDesc = shortDesc;
-        this.quantity = quantity;
-        this.sold = sold;
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", detailDesc="
+                + detailDesc + ", shortDesc=" + shortDesc + ", quantity=" + quantity + ", sold=" + sold + ", status="
+                + status + ", category=" + category + "]";
     }
 
 }

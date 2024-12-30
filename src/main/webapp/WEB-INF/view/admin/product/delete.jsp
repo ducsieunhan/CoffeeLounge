@@ -9,6 +9,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Table Users</title>
                 <link rel="stylesheet" href="/client/css/starter/starter.css">
+
                 <link href="/admin/css/styles.css" rel="stylesheet" />
 
 
@@ -34,43 +35,27 @@
                                 <h1 class="mt-4">Manage Orders</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Users</li>
+                                    <li class="breadcrumb-item active">Product</li>
                                 </ol>
 
                                 <section class="register-section">
                                     <div class="register-wrapper width-container">
-                                        <h2>Update User Id: ${id}</h2>
-                                        <form:form method="POST" action="/admin/user/update" modelAttribute="updateUser"
-                                            class="register-form">
+                                        <h2>Delete Product Id: ${id}</h2>
+                                        <div class="alert alert-danger">Are you sure to delete this product?</div>
+                                        <form:form method="POST" action="/admin/product/delete"
+                                            modelAttribute="deleteProduct" class="register-form">
                                             <div class="form-group">
                                                 <label for="email">Id <span class="bill-important">*</span></label>
                                                 <form:input path="id" type="text" id="id" name="id" class="input-text"
                                                     readonly="true" />
                                             </div>
                                             <div class="form-group">
-                                                <label for="email">Email <span class="bill-important">*</span></label>
-                                                <form:input path="email" type="email" id="email" name="email"
+                                                <label for="email">Name <span class="bill-important">*</span></label>
+                                                <form:input path="name" type="text" id="email" name="email"
                                                     class="input-text" readonly="true" />
                                             </div>
-                                            <div class="form-group">
-                                                <label for="fullName">Full Name <span
-                                                        class="bill-important">*</span></label>
-                                                <form:input path="fullName" type="text" id="fullName" name="fullName"
-                                                    class="input-text" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="phone">Phone <span class="bill-important">*</span></label>
-                                                <form:input path="phone" type="tel" id="phone" name="phone"
-                                                    class="input-text" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Role:</label>
-                                                <form:select class="form-select" path="role.name">
-                                                    <form:option value="ADMIN">ADMIN</form:option>
-                                                    <form:option value="USER">USER</form:option>
-                                                </form:select>
-                                            </div>
-                                            <button class="submit-btn" type="submit" value="submit">Update</button>
+                                            <button class="submit-btn" type="submit" value="submit">Delete This
+                                                Product</button>
                                         </form:form>
                                     </div>
                                 </section>

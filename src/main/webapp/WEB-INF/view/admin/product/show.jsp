@@ -44,7 +44,8 @@
                                         <div class="col-12 mx-auto">
                                             <div class="d-flex justify-content-between">
                                                 <h3>Table users</h3>
-                                                <a href="/admin/user/create" class="btn btn-primary">Create a user</a>
+                                                <a href="/admin/product/create" class="btn btn-primary">Create a
+                                                    product</a>
                                             </div>
 
                                             <hr />
@@ -52,24 +53,25 @@
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
-                                                        <th>Email</th>
-                                                        <th>Full Name</th>
+                                                        <th>Name</th>
+                                                        <th>Quantity left</th>
+                                                        <th>Amount sold</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var="user" items="${users}">
+                                                    <c:forEach var="product" items="${products}">
                                                         <tr>
-                                                            <th>${user.id}</th>
-                                                            <td>${user.email}</td>
-                                                            <td>${user.fullName}</td>
-                                                            <td>${user.getRole().getName()}</td>
+                                                            <th>${product.id}</th>
+                                                            <td>${product.name}</td>
+                                                            <td>${product.quantity}</td>
+                                                            <td>${product.sold}</td>
                                                             <td>
-                                                                <a href="/admin/user/${user.id}"
+                                                                <a href="/admin/product/${product.id}"
                                                                     class="btn btn-primary">View</a>
-                                                                <a href="/admin/user/update/${user.id}"
+                                                                <a href="/admin/product/update/${product.id}"
                                                                     class="btn btn-warning">Update</a>
-                                                                <a href="/admin/user/delete/${user.id}"
+                                                                <a href="/admin/product/delete/${product.id}"
                                                                     class="btn btn-primary">Delete</a>
                                                             </td>
                                                         </tr>

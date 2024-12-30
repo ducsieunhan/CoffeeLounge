@@ -10,7 +10,8 @@
                 <title>Table Users</title>
                 <link rel="stylesheet" href="/client/css/starter/starter.css">
 
-                <link rel="stylesheet" href="/client/css/layout/layout.css">
+                <link href="/admin/css/styles.css" rel="stylesheet" />
+
 
                 <!-- Latest compiled and minified CSS -->
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,37 +23,51 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
             </head>
 
-            <body>
-                <jsp:include page="../../client/layout/header.jsp" />
-                <jsp:include page="../../client/layout/swiper.jsp" />
+            <body class="sb-nav-fixed">
+                <jsp:include page="../layout/header.jsp" />
 
+                <div id="layoutSidenav">
 
-                <section class="register-section">
-                    <div class="register-wrapper width-container">
-                        <h2>Delete User Id: ${id}</h2>
-                        <div class="alert alert-danger">Are you sure to delete this user?</div>
-                        <form:form method="POST" action="/admin/user/delete" modelAttribute="deleteUser"
-                            class="register-form">
-                            <div class="form-group">
-                                <label for="email">Id <span class="bill-important">*</span></label>
-                                <form:input path="id" type="text" id="id" name="id" class="input-text"
-                                    readonly="true" />
+                    <jsp:include page="../layout/sidebar.jsp" />
+                    <div id="layoutSidenav_content">
+                        <main>
+                            <div class="container-fluid px-4">
+                                <h1 class="mt-4">Manage Orders</h1>
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Users</li>
+                                </ol>
+
+                                <section class="register-section">
+                                    <div class="register-wrapper width-container">
+                                        <h2>Delete User Id: ${id}</h2>
+                                        <div class="alert alert-danger">Are you sure to delete this user?</div>
+                                        <form:form method="POST" action="/admin/user/delete" modelAttribute="deleteUser"
+                                            class="register-form">
+                                            <div class="form-group">
+                                                <label for="email">Id <span class="bill-important">*</span></label>
+                                                <form:input path="id" type="text" id="id" name="id" class="input-text"
+                                                    readonly="true" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email <span class="bill-important">*</span></label>
+                                                <form:input path="email" type="email" id="email" name="email"
+                                                    class="input-text" readonly="true" />
+                                            </div>
+                                            <button class="submit-btn" type="submit" value="submit">Delete This
+                                                User</button>
+                                        </form:form>
+                                    </div>
+                                </section>
+
                             </div>
-                            <div class="form-group">
-                                <label for="email">Email <span class="bill-important">*</span></label>
-                                <form:input path="email" type="email" id="email" name="email" class="input-text"
-                                    readonly="true" />
-                            </div>
-                            <button class="submit-btn" type="submit" value="submit">Delete This User</button>
-                        </form:form>
+                        </main>
+
+                        <jsp:include page="../layout/footer.jsp" />
+
                     </div>
-                </section>
 
-
-
-                <jsp:include page="../../client/layout/footer.jsp" />
-
-
+                </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>
                 <script src="js/scripts.js"></script>

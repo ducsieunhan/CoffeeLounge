@@ -33,8 +33,8 @@
                                 <h1 class="mt-4">Manage Orders</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="/admin/user">User</a></li>
-                                    <li class="breadcrumb-item active">View Users</li>
+                                    <li class="breadcrumb-item"><a href="/admin/product">product</a></li>
+                                    <li class="breadcrumb-item active">View Product</li>
                                 </ol>
 
 
@@ -42,23 +42,28 @@
                                 <div class="container mt-5">
                                     <div class="row">
                                         <div class="col-md-6 col-12 mx-auto">
-                                            <h1>User Detail With id: ${id}</h1>
+                                            <h1>Product Detail With id: ${id}</h1>
                                         </div>
 
                                         <hr>
 
                                         <div class="card" style="width: 60vw; ">
                                             <div class="card-header">
-                                                User Info
+                                                Product Info
                                             </div>
                                             <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">ID: ${user.id}</li>
-                                                <li class="list-group-item">Email: ${user.email} </li>
-                                                <li class="list-group-item">Full Name: ${user.fullName} </li>
+                                                <li class="list-group-item">Product name: ${product.name}</li>
+                                                <li class="list-group-item">Product price: ${product.price}</li>
+                                                <li class="list-group-item">Product quantity left: ${product.quantity}
+                                                </li>
+                                                <li class="list-group-item">Product quantity sold: ${product.sold}</li>
+                                                <li class="list-group-item">Product status: ${status}</li>
+                                                <li class="list-group-item">Product category: ${category}</li>
+
                                             </ul>
                                         </div>
 
-                                        <a href="/admin/user" class="btn btn-primary mt-3 ">Back</a>
+                                        <a href="/admin/product" class="btn btn-primary mt-3 ">Back</a>
 
                                     </div>
                                 </div>
