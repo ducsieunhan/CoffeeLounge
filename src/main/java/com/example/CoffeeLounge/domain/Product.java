@@ -1,13 +1,14 @@
 package com.example.CoffeeLounge.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -21,16 +22,22 @@ public class Product {
     private long id;
 
     @NotBlank(message = "You must input the product name!!!")
-    @Size(max = 100, message = "The product name cannot exceed 100 characters.")
+    @Size(max = 255, message = "The product name cannot exceed 100 characters.")
     private String name;
 
     @NotNull(message = "You must input the product price!!!")
+    @Min(value = 1, message = "Price input must equal or bigger than 1")
     private double price;
     private String image;
+
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String detailDesc;
+
+    @Size(max = 550, message = "The product name cannot exceed 100 characters.")
     private String shortDesc;
 
-    @NotNull(message = "You must input the product quantity!!!")
+    @NotNull()
+    @Min(value = 1, message = "Quantity input must equal or bigger than 1")
     private long quantity;
     private long sold;
 

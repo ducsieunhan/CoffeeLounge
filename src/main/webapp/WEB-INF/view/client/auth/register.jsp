@@ -55,6 +55,13 @@
                                     class="input-text" />
                                 <i class="fa-regular fa-eye check-pass" onclick="checkPassword()"></i>
                             </div>
+                            <div class="form-group form-confirm-password">
+                                <label for="confirm-password">Confirm Your Password <span
+                                        class="bill-important">*</span></label>
+                                <form:input path="confirmPassword" type="password" id="confirm-password"
+                                    name="confirm-password" class="input-text" />
+                                <i class="fa-regular fa-eye check-pass" onclick="checkPassword()"></i>
+                            </div>
                             <div class="form-group">
                                 <label for="fullName">Full Name <span class="bill-important">*</span></label>
                                 <form:input path="fullName" type="text" id="fullName" name="fullName"

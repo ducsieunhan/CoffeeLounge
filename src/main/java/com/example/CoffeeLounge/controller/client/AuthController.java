@@ -2,6 +2,7 @@ package com.example.CoffeeLounge.controller.client;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.CoffeeLounge.domain.User;
+import com.example.CoffeeLounge.domain.dto.RegisterDTO;
 import com.example.CoffeeLounge.service.UserService;
 
 import jakarta.validation.Valid;
@@ -19,45 +21,42 @@ import jakarta.validation.Valid;
 public class AuthController {
 
     private UserService userService;
+    private PasswordEncoder passwordEncoder;
 
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/register")
+    @GetMapping("/auth/register")
     public String getRegister(Model model) {
         model.addAttribute("page_name", "Register");
-        model.addAttribute("newUser", new User());
+        model.addAttribute("newUser", new RegisterDTO());
         return "client/auth/register";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/auth/login")
     public String getLogin(Model model) {
-        model.addAttribute("page_name", "Register");
+        model.addAttribute("page_name", "My Account");
+        model.addAttribute("loginUser", new User());
+
         return "client/auth/login";
     }
 
     @PostMapping("/register")
-    public String handleRegister(@ModelAttribute("newUser") User ducsieunhan) {
-        System.out.println("run: " + ducsieunhan);
-        this.userService.handleSaveUser(ducsieunhan);
-        return "redirect:/admin/user";
+    public String handleRegister(@ModelAttribute("newUser") RegisterDTO ducsieunhan,
+            BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "client/auth/register";
+        }
+
+        User newUser = this.userService.RegisterDTOtoUser(ducsieunhan);
+        newUser.setPassword(this.passwordEncoder.encode(newUser.getPassword()));
+        newUser.setRole(this.userService.getRoleByName("USER"));
+
+        this.userService.handleSaveUser(newUser);
+        return "redirect:/auth/login";
 
     }
 }
-
-// @RestController
-// public class UserController {
-
-// private UserService userService;
-
-// public UserController(UserService userService) {
-// this.userService = userService;
-// }
-
-// @GetMapping("/")
-// public String getHomePage() {
-// return this.userService.handleHello();
-// }
-
-// }

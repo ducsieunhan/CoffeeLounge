@@ -504,322 +504,44 @@
                             <div class="slide-container" style="overflow:hidden;">
                                 <div class="products-list swiper-wrapper">
 
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
+                                    <c:forEach var="product" items="${products}">
+                                        <div class="product-wrapper swiper-slide">
+                                            <div class="product-detail">
+                                                <div class="product-thumbnail">
+                                                    <a href="/product/${product.id}">
+                                                        <img class="product-img" src="/images/product/${product.image}"
+                                                            alt="">
+                                                    </a>
+                                                    <div class="product-action">
+                                                        <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
+                                                            data-message="Add to Favorites"></a>
+                                                    </div>
+                                                    <div class="product-actions">
+                                                        <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
+                                                            data-message="Add to Cart"></a>
+                                                        <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
+                                                            data-message="View Details"></a>
+                                                    </div>
                                                 </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
+                                                <div class="product-inf">
+                                                    <a href="/product/${product.id}">${product.name}</a>
+                                                    <div class="product-price"
+                                                        style="display: flex; justify-content: center;">
+                                                        <del style="color: gray; height: 0.5px; margin-right: 10px;">
+                                                            <h4 style="color: gray !important;"><span
+                                                                    style="color: gray !important;">$</span>${product.price}
+                                                            </h4>
+                                                        </del>
+                                                        <h4 style="color: red !important;"><span
+                                                                style="color: red !important;">$</span>${product.price}
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
+                                            <div class="background-color-expand">
                                             </div>
                                         </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-wrapper swiper-slide">
-                                        <div class="product-detail">
-                                            <div class="product-thumbnail">
-                                                <img class="product-img"
-                                                    src="/client/images/products/Vietnam-Robusta-Coffee-Grade-1-SCR-18-Wet-Polished-2-768x768.jpg"
-                                                    alt="">
-                                                <div class="product-action">
-                                                    <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                        data-message="Add to Favorites"></a>
-                                                </div>
-                                                <div class="product-actions">
-                                                    <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="Add to Cart"></a>
-                                                    <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
-                                                        data-message="View Details"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-inf">
-                                                <a href="">Classic Blend (Arabica & Robusta)</a>
-                                                <h4><span>$</span>18.00</h4>
-                                            </div>
-                                        </div>
-                                        <div class="background-color-expand">
-                                        </div>
-                                    </div>
-
-
-
-
-
+                                    </c:forEach>
 
                                 </div>
                                 <div class="swiper-btn">
@@ -884,7 +606,7 @@
             </body>
 
             <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-            <script src="homepage.js"></script>
+            <script src="/client/js/homepage.js"></script>
             <script>
             </script>
 

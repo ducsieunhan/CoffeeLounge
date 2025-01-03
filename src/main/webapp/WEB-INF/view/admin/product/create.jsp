@@ -192,6 +192,7 @@
                                                                                 *</label>
                                                                             <form:input path="quantity"
                                                                                 id="form_quantity" type="text"
+                                                                                value="1000"
                                                                                 class="form-control ${not empty errorQuantity ? 'is-invalid' : ''}" />
                                                                             ${errorQuantity}
                                                                         </div>

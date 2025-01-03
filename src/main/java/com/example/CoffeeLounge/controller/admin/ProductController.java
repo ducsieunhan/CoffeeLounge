@@ -92,25 +92,35 @@ public class ProductController {
     }
 
     @PostMapping("/admin/product/update")
-    public String postUpdateProduct(Model model, @ModelAttribute("newProduct") @Valid Product product,
+    public String postUpdateProduct(Model model, @ModelAttribute("updateProduct") @Valid Product product,
             BindingResult newUseBindingResult,
             @RequestParam("ducsieunhan") MultipartFile file) {
-
-        List<FieldError> errors = newUseBindingResult.getFieldErrors();
-        for (FieldError error : errors) {
-            System.out.println(error.getField() + " - " + error.getDefaultMessage());
-        }
 
         if (newUseBindingResult.hasErrors()) {
             model.addAttribute("categories", this.productService.getAllCategories());
             return "admin/product/update";
         }
 
-        product.setImage(this.uploadService.handleSaveUploadFile(file, "product"));
-        product.setStatus(this.productService.getStatusByName(product.getStatus().getName()));
-        product.setCategory(this.productService.getCategoryByName(product.getCategory().getName()));
-        product.setSold(0);
-        this.productService.handleSaveProduct(product);
+        Product productToUpdate = this.productService.getById(product.getId());
+
+        if (productToUpdate != null) {
+            if (!file.isEmpty()) {
+                String img = this.uploadService.handleSaveUploadFile(file, "product");
+                productToUpdate.setImage(img);
+            }
+
+            productToUpdate.setName(product.getName());
+            productToUpdate.setPrice(product.getPrice());
+            productToUpdate.setQuantity(product.getQuantity());
+            productToUpdate.setShortDesc(product.getShortDesc());
+            productToUpdate.setDetailDesc(product.getDetailDesc());
+
+            productToUpdate.setStatus(this.productService.getStatusByName(productToUpdate.getStatus().getName()));
+            productToUpdate.setCategory(this.productService.getCategoryByName(productToUpdate.getCategory().getName()));
+            this.productService.handleSaveProduct(productToUpdate);
+
+        }
+        // product.setSold(0);
         return "redirect:/admin/product";
     }
 

@@ -24,7 +24,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[azA-Z0-9.-]+$")
+    @Email(message = "Email is not valid")
     @NotEmpty(message = "Email cannot be empty")
     private String email;
 

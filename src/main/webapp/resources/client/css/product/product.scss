@@ -413,6 +413,73 @@ ul.breadcrumb li a:hover {
         .product-dt-desc {
             @include flex-container($align: start, $gap: 30px);
 
+            .cart {
+                @include flex-container($direction: row, $gap: 20px);
+
+                input[type="number"] {
+                    width: 25%;
+                    height: 100%;
+                    padding: 10px 5px 7px 15px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    text-align: left;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    border-radius: 5px;
+                    -webkit-appearance: textfield;
+                    -moz-appearance: textfield;
+                    appearance: textfield;
+                }
+
+                /* Style the spinner buttons */
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    opacity: 1;
+                    width: 20px;
+                    height: 20px;
+                    background: #4D8B55;
+                    border: none;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    color: white;
+                }
+
+                /* Hover state */
+                input[type="number"]::-webkit-inner-spin-button:hover,
+                input[type="number"]::-webkit-outer-spin-button:hover {
+                    background: #000;
+                }
+
+                /* Firefox specific styles */
+                input[type="number"] {
+                    -moz-appearance: textfield;
+                }
+
+                input[type="number"]::-moz-inner-spin-button {
+                    display: block;
+                    background: #4D8B55;
+                    border: none;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                }
+
+                .cart-btn {
+                    background-color: #4D8B55;
+                    padding: 10px 40px;
+                    border-radius: 30px;
+                    color: var(--light-text);
+                    font-size: 20px;
+                    font-weight: bolder;
+                    @include flex-container();
+                    transition: 0.3s all;
+
+                    &:hover {
+                        background-color: #000;
+                    }
+                }
+            }
+
             .pro-dt-header {
                 font-size: 28px;
 
@@ -467,6 +534,8 @@ ul.breadcrumb li a:hover {
                     }
                 }
             }
+
+
         }
 
     }

@@ -19,12 +19,19 @@
                 <script>
                     $(document).ready(() => {
                         const avatarFile = $("#avatarFile");
+                        const orgImage = "${updateProduct.image}";
+                        if (orgImage) {
+                            const urlImage = "/images/product/" + orgImage;
+                            $("#avatarPreview").attr("src", urlImage);
+                            $("#avatarPreview").css({ "display": "block" });
+                        }
+
                         avatarFile.change(function (e) {
                             const imgURL = URL.createObjectURL(e.target.files[0]);
                             $("#avatarPreview").attr("src", imgURL);
                             $("#avatarPreview").css({ "display": "block" });
                         });
-                    }); 
+                    });
                 </script>
             </head>
 
@@ -83,10 +90,9 @@
 
                                                     <div class="container">
 
-                                                        <form:form id="contact-form" role="form" class="lh-lg"
-                                                            action="/admin/product/update" method="post"
-                                                            modelAttribute="updateProduct"
-                                                            enctype="multipart/form-data">
+                                                        <form:form method="post" action="/admin/product/update"
+                                                            class="row" enctype="multipart/form-data"
+                                                            modelAttribute="updateProduct">
 
                                                             <div class="controls">
                                                                 <div class="row">
@@ -174,7 +180,7 @@
                                                                         <div class="form-group">
                                                                             <label for="form_lastname">Image
                                                                                 *</label>
-                                                                            <form:input path="" class="form-control"
+                                                                            <input path="" class="form-control"
                                                                                 type="file" id="avatarFile"
                                                                                 name="ducsieunhan"
                                                                                 accept=".png, .jpg, .jpeg" />
@@ -195,6 +201,16 @@
                                                                                 id="form_quantity" type="text"
                                                                                 class="form-control ${not empty errorQuantity ? 'is-invalid' : ''}" />
                                                                             ${errorQuantity}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="form_id">Product Id
+                                                                                *</label>
+                                                                            <form:input path="id" id="form_id"
+                                                                                type="text" name="id"
+                                                                                class="form-control" />
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -219,7 +235,7 @@
                                                                     <div class="col-md-12 mt-3 text-center">
 
                                                                         <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
-                                                              " value="Create Product">
+                                                              " value="Update Product">
 
                                                                     </div>
 
@@ -235,6 +251,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                         </main>
                         <jsp:include page="../layout/footer.jsp" />
                     </div>

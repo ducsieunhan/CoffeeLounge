@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.CoffeeLounge.domain.Role;
 import com.example.CoffeeLounge.domain.User;
+import com.example.CoffeeLounge.domain.dto.RegisterDTO;
 import com.example.CoffeeLounge.repository.RoleRepository;
 import com.example.CoffeeLounge.repository.UserRepository;
 
@@ -37,6 +38,15 @@ public class UserService {
 
     public Role getRoleByName(String name) {
         return this.roleRepository.getRoleByName(name);
+    }
+
+    public User RegisterDTOtoUser(RegisterDTO registerDTO) {
+        User newUser = new User();
+        newUser.setEmail(registerDTO.getEmail());
+        newUser.setFullName(registerDTO.getFullName());
+        newUser.setPhone(registerDTO.getPhone());
+        newUser.setPassword(registerDTO.getPassword());
+        return newUser;
     }
 
 }
