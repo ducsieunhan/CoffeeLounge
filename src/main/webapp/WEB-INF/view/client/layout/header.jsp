@@ -21,7 +21,15 @@
             </div>
             <div class="header-right">
                 <div class="header-right-content">
-                    <a href=""><i class="fa-solid fa-user"></i></a>
+                    <div class="user-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="/change-password" style="color: black;">Account</a>
+                            <a href="/logout" style="color: black;">Log Out</a>
+                        </div>
+                    </div>
                     <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
                     <a href=""><i class="fa-regular fa-star"></i></a>
                     <a href=""><i class="fa-solid fa-bag-shopping"></i></a>

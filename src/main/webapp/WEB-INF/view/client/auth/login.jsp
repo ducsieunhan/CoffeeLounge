@@ -110,6 +110,7 @@
 
 
             </body>
+            <script src="/client/js/layout.js"></script>
             <script>
 
                 const checks = document.querySelectorAll('.check-pass');

@@ -107,6 +107,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
 
 
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const userDropdown = document.querySelector('.user-dropdown');
+
+    dropdownToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        userDropdown.classList.toggle('active');
+    });
+
+    // Đóng dropdown khi click ra ngoài
+    document.addEventListener('click', function (e) {
+        if (!userDropdown.contains(e.target)) {
+            userDropdown.classList.remove('active');
+        }
+    });
+
 
 });
 

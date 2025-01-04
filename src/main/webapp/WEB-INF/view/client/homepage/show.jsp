@@ -18,35 +18,7 @@
                 <link
                     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Mysuru:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Elite&display=swap"
                     rel="stylesheet">
-                <!-- Google Web Fonts -->
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
-                    rel="stylesheet">
 
-                <!-- Icon Font Stylesheet -->
-                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-                    rel="stylesheet">
-
-                <!-- Libraries Stylesheet -->
-                <link href="/client/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-                <link href="/client/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-
-                <!-- Customized Bootstrap Stylesheet -->
-                <link href="/client/css/bootstrap.min.css" rel="stylesheet">
-
-                <!-- Template Stylesheet -->
-                <link href="/client/css/style.css" rel="stylesheet">
-
-                <meta name="_csrf" content="${_csrf.token}" />
-                <!-- default header name is X-CSRF-TOKEN -->
-                <meta name="_csrf_header" content="${_csrf.headerName}" />
-
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"
-                    rel="stylesheet">
             </head>
             <style>
                 .swiper-pagination-container {
@@ -81,6 +53,62 @@
                     .coffee-image {
                         background-image: url(/client/images/products/leaves_pattern_010.png);
                         background-color: #4D8B55;
+                    }
+                }
+
+                .header-right {
+                    .header-right-content {
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+
+                        a {
+                            color: #333;
+                            text-decoration: none;
+
+                            &:hover {
+                                color: #666;
+                            }
+                        }
+
+                        .user-dropdown {
+                            position: relative;
+
+                            .dropdown-toggle {
+                                cursor: pointer;
+                            }
+
+                            .dropdown-menu {
+                                display: none;
+                                position: absolute;
+                                top: 100%;
+                                right: 0;
+                                background: white;
+                                min-width: 150px;
+                                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                                border-radius: 4px;
+                                padding: 8px 0;
+                                z-index: 1000;
+
+                                a {
+                                    display: block;
+                                    padding: 8px 16px;
+                                    color: #333;
+                                    text-decoration: none;
+                                    font-size: 14px;
+
+                                    &:hover {
+                                        background-color: #f5f5f5;
+                                    }
+                                }
+                            }
+
+                            &.active {
+                                .dropdown-menu {
+                                    display: block;
+                                }
+                            }
+                        }
                     }
                 }
             </style>
@@ -636,7 +664,25 @@
 
             <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
             <script src="/client/js/homepage.js"></script>
+            <script src="/client/js/layout.js"></script>
+
             <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const dropdownToggle = document.querySelector('.dropdown-toggle');
+                    const userDropdown = document.querySelector('.user-dropdown');
+
+                    dropdownToggle.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        userDropdown.classList.toggle('active');
+                    });
+
+                    // Đóng dropdown khi click ra ngoài
+                    document.addEventListener('click', function (e) {
+                        if (!userDropdown.contains(e.target)) {
+                            userDropdown.classList.remove('active');
+                        }
+                    });
+                });
             </script>
 
             </html>

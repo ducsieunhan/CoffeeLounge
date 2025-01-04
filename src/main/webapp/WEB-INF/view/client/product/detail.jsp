@@ -162,4 +162,6 @@
 
 </body>
 
+<script src="/client/js/layout.js"></script>
+
 </html>

@@ -1,15 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const dropdownToggle = document.querySelector(".dropdown-toggle");
-    const dropdown = document.querySelector(".dropdown");
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const userDropdown = document.querySelector('.user-dropdown');
 
-    dropdownToggle.addEventListener("click", (e) => {
+    dropdownToggle.addEventListener('click', function (e) {
         e.preventDefault();
-        dropdown.classList.toggle("active");
+        userDropdown.classList.toggle('active');
     });
 
-    document.addEventListener("click", (e) => {
-        if (!dropdown.contains(e.target)) {
-            dropdown.classList.remove("active");
+    document.addEventListener('click', function (e) {
+        if (!userDropdown.contains(e.target)) {
+            userDropdown.classList.remove('active');
         }
     });
 });
