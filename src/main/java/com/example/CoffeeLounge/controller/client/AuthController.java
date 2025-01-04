@@ -35,7 +35,7 @@ public class AuthController {
         return "client/auth/register";
     }
 
-    @GetMapping("/auth/login")
+    @GetMapping("/login")
     public String getLogin(Model model) {
         model.addAttribute("page_name", "My Account");
         model.addAttribute("loginUser", new User());
@@ -44,10 +44,11 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String handleRegister(@ModelAttribute("newUser") RegisterDTO ducsieunhan,
+    public String handleRegister(Model model, @ModelAttribute("newUser") @Valid RegisterDTO ducsieunhan,
             BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("page_name", "Register Account");
             return "client/auth/register";
         }
 

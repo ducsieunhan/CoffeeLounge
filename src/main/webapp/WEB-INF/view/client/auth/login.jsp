@@ -71,16 +71,23 @@
                 <section class="register-section">
                     <div class="register-wrapper width-container">
                         <h2>Login</h2>
-                        <form:form method="POST" action="/login" modelAttribute="loginUser" class="register-form">
+                        <form method="POST" action="/login" class="register-form">
+                            <c:if test="${param.error != null}">
+                                <div class="my-2" style="color: red;">Invalid email or password.</div>
+                            </c:if>
                             <div class="form-group">
                                 <label for="email">Email address <span class="bill-important">*</span></label>
-                                <form:input path="email" type="email" id="email" name="email" class="input-text" />
+                                <input path="email" type="email" id="email" name="username" class="input-text" />
                             </div>
                             <div class="form-group form-password">
                                 <label for="password">Password <span class="bill-important">*</span></label>
-                                <form:input path="password" type="password" id="password" name="password"
+                                <input path="password" type="password" id="password" name="password"
                                     class="input-text" />
                                 <i class="fa-regular fa-eye check-pass" onclick="checkPassword()"></i>
+                            </div>
+
+                            <div>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </div>
                             <div class="login-check">
                                 <button class="login-btn" type="login" value="login">Login</button>
@@ -95,7 +102,7 @@
                                 style="text-align: start !important; display: block; font-weight: normal;">Lost
                                 your password?
                             </a>
-                        </form:form>
+                        </form>
                     </div>
                 </section class="register-section">
 

@@ -2,9 +2,16 @@ package com.example.CoffeeLounge.domain.dto;
 
 import com.example.CoffeeLounge.service.validator.RegisterChecked;
 
+import io.micrometer.common.lang.NonNull;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 @RegisterChecked
 public class RegisterDTO {
     private String fullName;
+
+    @NotBlank(message = "You must input the email address!!!")
     private String email;
     private String confirmPassword;
     private String phone;

@@ -18,6 +18,8 @@
                     rel="stylesheet">
                 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
                     rel="stylesheet">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
             </head>
 
             <style>
@@ -45,15 +47,24 @@
                     <div class="register-wrapper width-container">
                         <h2>Register</h2>
                         <form:form method="POST" action="/register" modelAttribute="newUser" class="register-form">
+                            <c:set var="errorPassword">
+                                <form:errors path="confirmPassword" cssClass="invalid-feedback" />
+                            </c:set>
+                            <c:set var="errorEmail">
+                                <form:errors path="email" cssClass="invalid-feedback" />
+                            </c:set>
                             <div class="form-group">
                                 <label for="email">Email <span class="bill-important">*</span></label>
-                                <form:input path="email" type="email" id="email" name="email" class="input-text" />
+                                <form:input path="email" type="email" id="email" name="email"
+                                    class="input-text  ${not empty errorEmail ? 'is-invalid' : ''}" />
+                                ${errorEmail}
                             </div>
                             <div class="form-group form-password">
                                 <label for="password">Password <span class="bill-important">*</span></label>
                                 <form:input path="password" type="password" id="password" name="password"
-                                    class="input-text" />
+                                    class="input-text  ${not empty errorPassword ? 'is-invalid' : ''}" />
                                 <i class="fa-regular fa-eye check-pass" onclick="checkPassword()"></i>
+                                ${errorPassword}
                             </div>
                             <div class="form-group form-confirm-password">
                                 <label for="confirm-password">Confirm Your Password <span
@@ -81,6 +92,8 @@
 
 
             </body>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                crossorigin="anonymous"></script>
             <script>
 
                 const checks = document.querySelectorAll('.check-pass');

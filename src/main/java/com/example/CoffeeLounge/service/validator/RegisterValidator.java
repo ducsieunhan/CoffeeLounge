@@ -1,11 +1,21 @@
 package com.example.CoffeeLounge.service.validator;
 
+import org.springframework.stereotype.Service;
+
 import com.example.CoffeeLounge.domain.dto.RegisterDTO;
+import com.example.CoffeeLounge.service.UserService;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+@Service
 public class RegisterValidator implements ConstraintValidator<RegisterChecked, RegisterDTO> {
+
+    private final UserService userService;
+
+    public RegisterValidator(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public boolean isValid(RegisterDTO user, ConstraintValidatorContext context) {
@@ -21,6 +31,14 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
         }
 
         // Additional validations can be added here
+
+        if (this.userService.checkEmailExist(user.getEmail())) {
+            context.buildConstraintViolationWithTemplate("Email already exists!!")
+                    .addPropertyNode("email")
+                    .addConstraintViolation()
+                    .disableDefaultConstraintViolation();
+            valid = false;
+        }
 
         return valid;
     }

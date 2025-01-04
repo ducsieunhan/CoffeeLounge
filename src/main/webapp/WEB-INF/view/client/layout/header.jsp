@@ -5,8 +5,8 @@
             <div class="header-left">
                 <div class="page-navigation">
                     <nav class="navbar menu menu-container">
-                        <a href="">Home</a>
-                        <a href=" oceans/index.html">Products</a>
+                        <a href="/">Home</a>
+                        <a href="/product">Products</a>
                         <a href="actions/index.html">Blog</a>
                         <a href="oceanguard/index.html">About</a>
                     </nav>
@@ -15,8 +15,7 @@
 
             <div class="header-center">
                 <div class="branding">
-                    <a href="#" rel="home" style="display: block; width: 50px; height: 50px;"> <img
-                            src="/frontend/images/snapedit_1731941218376.png" alt="">
+                    <a href="#" rel="home" style="display: block; width: 50px; height: 50px;"> <img src="" alt="">
                     </a>
                 </div>
             </div>
