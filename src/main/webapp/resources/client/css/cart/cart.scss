@@ -110,7 +110,7 @@ ul.breadcrumb li a:hover {
 
 .cart-table-container {
     .cart-table-wrapper {
-        form {
+        .cart-table {
             background: transparent;
             padding: 0;
             text-align: start;
@@ -148,15 +148,6 @@ ul.breadcrumb li a:hover {
                             @include font-adjust($size: 18px, $weight: bolder, $color: #000);
                             border: 1px solid #e5e7eb;
 
-                        }
-
-                        .product-remove {
-                            border-right: none;
-
-                            a {
-                                text-decoration: none;
-                                color: var(--hight-light-text);
-                            }
                         }
 
                         .product-thumbnail {

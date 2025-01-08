@@ -60,4 +60,11 @@ public class AuthController {
         return "redirect:/auth/login";
 
     }
+
+    @GetMapping("/access-deny")
+    public String getDenyPage(Model model) {
+        model.addAttribute("page_name", "Access Deny");
+
+        return "client/auth/deny";
+    }
 }

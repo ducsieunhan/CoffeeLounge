@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <!DOCTYPE html>
             <html lang="en">
 
@@ -55,62 +54,6 @@
                         background-color: #4D8B55;
                     }
                 }
-
-                .header-right {
-                    .header-right-content {
-                        display: flex;
-                        align-items: center;
-                        gap: 20px;
-
-                        a {
-                            color: #333;
-                            text-decoration: none;
-
-                            &:hover {
-                                color: #666;
-                            }
-                        }
-
-                        .user-dropdown {
-                            position: relative;
-
-                            .dropdown-toggle {
-                                cursor: pointer;
-                            }
-
-                            .dropdown-menu {
-                                display: none;
-                                position: absolute;
-                                top: 100%;
-                                right: 0;
-                                background: white;
-                                min-width: 150px;
-                                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                                border-radius: 4px;
-                                padding: 8px 0;
-                                z-index: 1000;
-
-                                a {
-                                    display: block;
-                                    padding: 8px 16px;
-                                    color: #333;
-                                    text-decoration: none;
-                                    font-size: 14px;
-
-                                    &:hover {
-                                        background-color: #f5f5f5;
-                                    }
-                                }
-                            }
-
-                            &.active {
-                                .dropdown-menu {
-                                    display: block;
-                                }
-                            }
-                        }
-                    }
-                }
             </style>
 
             <body>
@@ -141,15 +84,18 @@
                                 <h2 class="review-sc-head">Vietnam Coffee Exporter, Manufacturer & Supplier</h2>
                                 <p class="review-text">Helena Coffee Processing & Export in Vietnam | Helena., JSC,
                                     which was
-                                    established in 2016, is a Vietnamese coffee exporter, manufacturer & supplier. We
+                                    established in 2016, is a Vietnamese coffee exporter, manufacturer & supplier.
+                                    We
                                     provide the
-                                    most prevalent varieties of coffee grown in Vietnam’s renowned producing regions.
+                                    most prevalent varieties of coffee grown in Vietnam’s renowned producing
+                                    regions.
                                     After years of
                                     growth, we have become one of the most well-known coffee production and export
                                     enterprises in
                                     Vietnam. Our coffee beans (Robusta & Arabica) are now exported and consumed in a
                                     variety of
-                                    countries and areas across the world, including China, Taiwan, Thailand, Singapore,
+                                    countries and areas across the world, including China, Taiwan, Thailand,
+                                    Singapore,
                                     Ukraine, the
                                     United States, etc.</p>
                             </div>
@@ -364,7 +310,8 @@
                     <div class="quality-wrapper">
                         <h1>Best Quality Coffee Beans</h1>
                         <div class="quality-desc">
-                            <h2>Helena Coffee Vietnam - Vietnamese Coffee Exporter, Manufacturer & Supplier is devoted
+                            <h2>Helena Coffee Vietnam - Vietnamese Coffee Exporter, Manufacturer & Supplier is
+                                devoted
                                 to being a
                                 <span>trusted partner</span> to the coffee industry and provides <span>consistency
                                 </span> through
@@ -403,7 +350,8 @@
                                     altitude of
                                     <strong>over 800m</strong> above sea level with extraordinarily abundant and
                                     high-quality output
-                                    from the locality in the central highlands in Vietnam, such as <em><strong>Daklak,
+                                    from the locality in the central highlands in Vietnam, such as
+                                    <em><strong>Daklak,
                                             Daknong, Gia
                                             Lai,
                                             Lam Dong, etc.</strong></em>
@@ -423,7 +371,8 @@
                             style="--together-background: url(/client/images/homepage/branch-bg.png)">
                             <h2><span>Together</span>We make <br>A Better Worl
                             </h2>
-                            <p>Coffee is not just about how it tastes, not just about how it keeps us awake. But also
+                            <p>Coffee is not just about how it tastes, not just about how it keeps us awake. But
+                                also
                                 about
                                 Community and Environment</p>
                             <a href="together-btn">Read More</a>
@@ -450,7 +399,8 @@
                                 <i class="fa-solid fa-pen"></i>
                                 <div class="icon-text">
                                     <h4>Wide Assortment</h4>
-                                    <p>Vietnam Organic Coffee Bean, superfine taste of original coffee, the best start
+                                    <p>Vietnam Organic Coffee Bean, superfine taste of original coffee, the best
+                                        start
                                         for a
                                         roasting</p>
                                 </div>
@@ -478,7 +428,8 @@
                             <div class="icon-desc">
                                 <div class="icon-text" style="text-align: end;">
                                     <h4>Conservation</h4>
-                                    <p>Helena doing everything possible to ensure natural environments are protected and
+                                    <p>Helena doing everything possible to ensure natural environments are protected
+                                        and
                                         conserved
                                     </p>
                                 </div>
@@ -488,7 +439,8 @@
                             <div class="icon-desc">
                                 <div class="icon-text" style="text-align: end;">
                                     <h4>Local Communities</h4>
-                                    <p>HELENA is fully aware of the responsibility needed to help support and work with
+                                    <p>HELENA is fully aware of the responsibility needed to help support and work
+                                        with
                                         these
                                         communities</p>
                                 </div>
@@ -574,9 +526,17 @@
                                                             data-message="Add to Favorites"></a>
                                                     </div>
                                                     <div class="product-actions">
-                                                        <a class="fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
-                                                            data-message="Add to Cart"></a>
-                                                        <a class="fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
+                                                        <form class="" action="/add-product-to-cart/${product.id}"
+                                                            method="post">
+                                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                                value="${_csrf.token}" />
+                                                            <button
+                                                                class="a-action fa-solid fa-bag-shopping rounded-highlight icon-tooltip icon-display-up"
+                                                                data-message="Add to Cart"
+                                                                style="border: none; cursor: pointer;"></button>
+                                                        </form>
+
+                                                        <a class="a-action fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
                                                             data-message="View Details"></a>
                                                     </div>
                                                 </div>
@@ -624,7 +584,8 @@
                                 <h6>December 18, 2024 </h6>
                                 <p>What is the EUDR? The EU Deforestation-free Regulation (EUDR) is a significant
                                     initiative by the
-                                    European Union aimed at combating global deforestation and forest degradation.</p>
+                                    European Union aimed at combating global deforestation and forest degradation.
+                                </p>
                                 <a href="">Read More</a>
                             </div>
                             <div class="coffee-content">
@@ -633,7 +594,8 @@
                                 <h6>December 18, 2024 </h6>
                                 <p>What is the EUDR? The EU Deforestation-free Regulation (EUDR) is a significant
                                     initiative by the
-                                    European Union aimed at combating global deforestation and forest degradation.</p>
+                                    European Union aimed at combating global deforestation and forest degradation.
+                                </p>
                                 <a href="">Read More</a>
                             </div>
                             <div class="coffee-content">
@@ -642,7 +604,8 @@
                                 <h6>December 18, 2024 </h6>
                                 <p>What is the EUDR? The EU Deforestation-free Regulation (EUDR) is a significant
                                     initiative by the
-                                    European Union aimed at combating global deforestation and forest degradation.</p>
+                                    European Union aimed at combating global deforestation and forest degradation.
+                                </p>
                                 <a href="">Read More</a>
                             </div>
                             <div class="coffee-content">
@@ -651,7 +614,8 @@
                                 <h6>December 18, 2024 </h6>
                                 <p>What is the EUDR? The EU Deforestation-free Regulation (EUDR) is a significant
                                     initiative by the
-                                    European Union aimed at combating global deforestation and forest degradation.</p>
+                                    European Union aimed at combating global deforestation and forest degradation.
+                                </p>
                                 <a href="">Read More</a>
                             </div>
                         </div>
@@ -665,24 +629,5 @@
             <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
             <script src="/client/js/homepage.js"></script>
             <script src="/client/js/layout.js"></script>
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const dropdownToggle = document.querySelector('.dropdown-toggle');
-                    const userDropdown = document.querySelector('.user-dropdown');
-
-                    dropdownToggle.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        userDropdown.classList.toggle('active');
-                    });
-
-                    // Đóng dropdown khi click ra ngoài
-                    document.addEventListener('click', function (e) {
-                        if (!userDropdown.contains(e.target)) {
-                            userDropdown.classList.remove('active');
-                        }
-                    });
-                });
-            </script>
 
             </html>

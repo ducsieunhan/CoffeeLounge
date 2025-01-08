@@ -109,12 +109,40 @@ ul.breadcrumb li a:hover {
   align-items: center;
   gap: 20px;
 }
-.header .page-header .header-wrap .header-right .header-right-content a {
-  color: #333;
+.header .page-header .header-wrap .header-right .header-right-content .icon-head {
+  color: #4D8B55;
   text-decoration: none;
+  font-size: 17px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #4D8B55;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s all;
 }
-.header .page-header .header-wrap .header-right .header-right-content a:hover {
-  color: #666;
+.header .page-header .header-wrap .header-right .header-right-content .icon-head:hover {
+  color: white;
+  border: 1px solid white;
+}
+.header .page-header .header-wrap .header-right .header-right-content .cart-icon {
+  position: relative;
+}
+.header .page-header .header-wrap .header-right .header-right-content .cart-icon::before {
+  content: attr(data-cart-sum);
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  background-color: var(--light-text);
+  color: #000;
+  font-size: 15px;
+  border-radius: 50%;
+  padding: 2px 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-weight: bolder;
 }
 .header .page-header .header-wrap .header-right .header-right-content .user-dropdown {
   position: relative;
@@ -134,14 +162,14 @@ ul.breadcrumb li a:hover {
   padding: 8px 0;
   z-index: 1000;
 }
-.header .page-header .header-wrap .header-right .header-right-content .user-dropdown .dropdown-menu a {
+.header .page-header .header-wrap .header-right .header-right-content .user-dropdown .dropdown-menu .drop-item {
   display: block;
   padding: 8px 16px;
   color: #333;
   text-decoration: none;
   font-size: 14px;
 }
-.header .page-header .header-wrap .header-right .header-right-content .user-dropdown .dropdown-menu a:hover {
+.header .page-header .header-wrap .header-right .header-right-content .user-dropdown .dropdown-menu .drop-item:hover {
   background-color: #f5f5f5;
 }
 .header .page-header .header-wrap .header-right .header-right-content .user-dropdown.active .dropdown-menu {
@@ -173,7 +201,7 @@ ul.breadcrumb li a:hover {
 }
 
 .cof-footer {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/client/images//footer-bg.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/client/images/footer-bg.jpg);
   color: var(--white);
   padding: 0 0 0 0;
   position: relative;
