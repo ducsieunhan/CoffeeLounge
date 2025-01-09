@@ -46,8 +46,15 @@
                                 <a href="/login" class="icon-head"><i class="fa-solid fa-user "></i></a>
                             </c:if>
                             <a href="" class="icon-head"><i class="fa-solid fa-magnifying-glass"></i></a>
-                            <a href="/cart" class="icon-head cart-icon" data-cart-sum="${sessionScope.sum}"><i
-                                    class="fa-solid fa-bag-shopping"></i></a>
+                            <c:if test="${not empty pageContext.request.userPrincipal}">
+                                <a href="/cart" class="icon-head cart-icon" data-cart-sum="${sessionScope.sum}"><i
+                                        class="fa-solid fa-bag-shopping"></i></a>
+                            </c:if>
+                            <c:if test="${ empty pageContext.request.userPrincipal}">
+                                <a href="/cart" class="icon-head cart-icon" data-cart-sum="0"><i
+                                        class="fa-solid fa-bag-shopping"></i></a>
+                            </c:if>
+
                         </div>
                     </div>
                 </div>

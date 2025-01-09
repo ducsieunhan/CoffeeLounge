@@ -221,9 +221,9 @@ ul.breadcrumb li a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.cart-checkout a {
-  text-decoration: none;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
   font-family: var(--font-family-desc);
   font-size: 20px;
   color: var(--light-text);
@@ -237,7 +237,7 @@ ul.breadcrumb li a:hover {
   align-items: center;
   justify-content: center;
 }
-.cart-checkout a:hover {
+.cart-checkout:hover {
   background-color: #000;
 }
 

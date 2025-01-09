@@ -54,7 +54,7 @@
                                                 </td>
                                             </tr>
                                         </c:if>
-                                        <c:forEach var="cartDetail" items="${cartDetails}">
+                                        <c:forEach var="cartDetail" items="${cartDetails}" varStatus="status">
                                             <tr class="cart-item">
                                                 <td class="product-remove">
                                                     <form method="post" action="/delete-cart-product/${cartDetail.id}">
@@ -83,14 +83,14 @@
                                                         <input type="number" id="" class="quantity-input" name=""
                                                             value="${cartDetail.quantity}"
                                                             data-cart-detail-id="${cartDetail.id}"
-                                                            data-cart-detail-price="${cartDetail.price}" title="Qty"
-                                                            size="4" min="0" max="" step="1" placeholder="">
+                                                            data-cart-detail-price="${cartDetail.product.price}"
+                                                            data-cart-detail-index="${status.index}" title="Qty"
+                                                            size="4" min="0" max="" step="1" placeholder="" />
                                                     </div>
                                                 </td>
                                                 <td class="product-subtotal">
                                                     <span data-cart-detail-id="${cartDetail.id}">$
-                                                        <fmt:formatNumber type="number"
-                                                            value="${cartDetail.price * cartDetail.quantity}" />
+                                                        <fmt:formatNumber type="number" value="${cartDetail.price}" />
                                                     </span>
                                                 </td>
                                             </tr>
@@ -148,9 +148,31 @@
                             </table>
                         </div>
                     </section>
-                    <div class="cart-checkout">
-                        <a href="detail.html">Proceed to checkout</a>
-                    </div>
+
+
+                    <form:form action="/confirm-checkout" method="post" modelAttribute="cart">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        <div style="display: block;">
+                            <c:forEach var="cartDetail" items="${cart.cartDetails}" varStatus="status">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label>Id:</label>
+                                        <form:input class="form-control" type="text" value="${cartDetail.id}"
+                                            path="cartDetails[${status.index}].id" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Quantity:</label>
+                                        <form:input class="form-control" type="text" value="${cartDetail.quantity}"
+                                            path="cartDetails[${status.index}].quantity" />
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                        <button class="cart-checkout">
+                            Proceed to checkout
+                        </button>
+                    </form:form>
+
 
                     <jsp:include page="../layout/footer.jsp" />
 
@@ -159,38 +181,56 @@
 
                 </body>
 
+
+
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
                 <script>
-                    $('.quantity-input').on('input change', function () {
-                        const input = $(this);
-                        const currentValue = input.val();
-                        const price = input.attr("data-cart-detail-price");
-                        const id = input.attr("data-cart-detail-id");
 
-                        // Update item price
-                        const priceElement = $(`span[data-cart-detail-id='${id}']`);
-                        if (priceElement) {
-                            const newPrice = +price * currentValue;
-                            priceElement.text(newPrice.toFixed(2));
+
+
+
+                    $('.quantity-input').each(function () {
+                        $(this).on('input change', function () {
+                            const input = $(this);
+                            const currentValue = input.val();
+                            const price = input.attr("data-cart-detail-price");
+                            const id = input.attr("data-cart-detail-id");
+
+                            // Update item price
+                            // const priceElement = $(`span[data-cart-detail-id="${id}"]`);
+                            // if (priceElement) {
+                            //     console.log(id);
+
+                            //     const newPrice = +price * currentValue;
+                            //     priceElement.text(newPrice.toFixed(2));
+                            // }
+
+                            const index = input.attr("data-cart-detail-index");
+                            const el = document.getElementById("cartDetails".concat(index, ".quantity"));
+                            if (el) {
+                                $(el).val(currentValue);
+                            }
+
+                            // Recalculate total by summing all items
+                            const totalPriceElement = $('[data-cart-total-price]');
+                            if (totalPriceElement.length) {
+                                let newTotal = 0;
+                                $('.quantity-input').each(function () {
+                                    const qty = $(this).val();
+                                    const price = $(this).attr('data-cart-detail-price');
+                                    newTotal += parseFloat(qty) * parseFloat(price);
+                                });
+
+                                totalPriceElement.each(function () {
+                                    $(this).text("$ " + newTotal.toFixed(2));
+                                    $(this).attr("data-cart-total-price", newTotal);
+                                });
+                            }
                         }
-
-                        // Recalculate total by summing all items
-                        const totalPriceElement = $('[data-cart-total-price]');
-                        if (totalPriceElement.length) {
-                            let newTotal = 0;
-                            $('.quantity-input').each(function () {
-                                const qty = $(this).val();
-                                const price = $(this).attr('data-cart-detail-price');
-                                newTotal += parseFloat(qty) * parseFloat(price);
-                            });
-
-                            totalPriceElement.each(function () {
-                                $(this).text(newTotal.toFixed(2));
-                                $(this).attr("data-cart-total-price", newTotal);
-                            });
-                        }
+                        )
                     });
+
                 </script>
 
                 </html>
