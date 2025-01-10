@@ -2,6 +2,7 @@ package com.example.CoffeeLounge.domain;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -45,7 +46,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;
 
     public Role getRole() {

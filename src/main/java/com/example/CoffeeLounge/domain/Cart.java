@@ -3,6 +3,7 @@ package com.example.CoffeeLounge.domain;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,7 +24,7 @@ public class Cart {
     @Min(value = 0)
     private int sum;
 
-    @OneToOne()
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

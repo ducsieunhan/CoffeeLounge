@@ -90,7 +90,8 @@
                                                 </td>
                                                 <td class="product-subtotal">
                                                     <span data-cart-detail-id="${cartDetail.id}">$
-                                                        <fmt:formatNumber type="number" value="${cartDetail.price}" />
+                                                        <fmt:formatNumber type="number"
+                                                            value="${cartDetail.product.price * cartDetail.quantity}" />
                                                     </span>
                                                 </td>
                                             </tr>
@@ -198,13 +199,13 @@
                             const id = input.attr("data-cart-detail-id");
 
                             // Update item price
-                            // const priceElement = $(`span[data-cart-detail-id="${id}"]`);
-                            // if (priceElement) {
-                            //     console.log(id);
+                            const priceElement = $("span[data-cart-detail-id=".concat(id, "]"));
+                            if (priceElement) {
+                                console.log(id);
 
-                            //     const newPrice = +price * currentValue;
-                            //     priceElement.text(newPrice.toFixed(2));
-                            // }
+                                const newPrice = +price * currentValue;
+                                priceElement.text(newPrice.toFixed(2));
+                            }
 
                             const index = input.attr("data-cart-detail-index");
                             const el = document.getElementById("cartDetails".concat(index, ".quantity"));

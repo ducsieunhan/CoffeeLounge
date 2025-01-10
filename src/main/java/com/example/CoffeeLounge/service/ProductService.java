@@ -4,16 +4,21 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.CoffeeLounge.domain.Cart;
 import com.example.CoffeeLounge.domain.CartDetail;
 import com.example.CoffeeLounge.domain.Category;
+import com.example.CoffeeLounge.domain.Order;
+import com.example.CoffeeLounge.domain.OrderDetail;
 import com.example.CoffeeLounge.domain.Product;
 import com.example.CoffeeLounge.domain.Status;
 import com.example.CoffeeLounge.domain.User;
 import com.example.CoffeeLounge.repository.CartDetailRepository;
 import com.example.CoffeeLounge.repository.CartRepository;
 import com.example.CoffeeLounge.repository.CategoryRepository;
+import com.example.CoffeeLounge.repository.OrderDetailRepository;
+import com.example.CoffeeLounge.repository.OrderRepository;
 import com.example.CoffeeLounge.repository.ProductRepository;
 import com.example.CoffeeLounge.repository.StatusRepository;
 
@@ -27,16 +32,21 @@ public class ProductService {
     private CartRepository cartRepository;
     private CartDetailRepository cartDetailRepository;
     private UserService userService;
+    private OrderRepository orderRepository;
+    private OrderDetailRepository orderDetailRepository;
 
     public ProductService(ProductRepository productRepository, StatusRepository statusRepository,
             CategoryRepository categoryRepository, CartRepository cartRepository,
-            CartDetailRepository cartDetailRepository, UserService userService) {
+            CartDetailRepository cartDetailRepository, UserService userService, OrderRepository orderRepository,
+            OrderDetailRepository orderDetailRepository) {
         this.productRepository = productRepository;
         this.statusRepository = statusRepository;
         this.categoryRepository = categoryRepository;
         this.cartDetailRepository = cartDetailRepository;
         this.cartRepository = cartRepository;
         this.userService = userService;
+        this.orderRepository = orderRepository;
+        this.orderDetailRepository = orderDetailRepository;
     }
 
     public List<Product> getAllProducts() {
@@ -102,7 +112,7 @@ public class ProductService {
             if (realProduct != null) {
                 if (cartExist != null) {
                     cartExist.setQuantity(cartExist.getQuantity() + 1);
-                    cartExist.setPrice((cartExist.getQuantity()) * realProduct.getPrice());
+                    cartExist.setPrice(realProduct.getPrice());
                     this.cartDetailRepository.save(cartExist);
                 } else {
                     CartDetail cd = new CartDetail();
@@ -150,6 +160,45 @@ public class ProductService {
                 CartDetail currentCartDetail = cdOptional.get();
                 currentCartDetail.setQuantity(cartDetail.getQuantity());
                 this.cartDetailRepository.save(currentCartDetail);
+            }
+        }
+    }
+
+    @Transactional
+    public void handlePlaceOrder(User user, HttpSession session, Order order) {
+        Cart cart = this.cartRepository.findByUser(user);
+
+        if (cart != null) {
+            List<CartDetail> cartDetails = cart.getCartDetails();
+
+            if (cartDetails != null) {
+                order.setUser(user);
+                order.setStatus("PENDING");
+
+                double sum = 0;
+                for (CartDetail cd : cartDetails) {
+                    sum += cd.getPrice();
+                }
+                order.setTotal(sum);
+                order = this.orderRepository.save(order);
+
+                for (CartDetail cd : cartDetails) {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.setOrder(order);
+                    orderDetail.setProduct(cd.getProduct());
+                    orderDetail.setPrice((long) cd.getPrice());
+                    orderDetail.setQuantity(cd.getQuantity());
+                    this.orderDetailRepository.save(orderDetail);
+                }
+
+                for (CartDetail cd : cartDetails) {
+                    this.cartDetailRepository.deleteById(cd.getId());
+                }
+
+                cart.setSum(0);
+                this.cartRepository.save(cart);
+
+                session.setAttribute("sum", 0);
             }
         }
     }
