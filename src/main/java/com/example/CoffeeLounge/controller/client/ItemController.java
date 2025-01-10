@@ -43,6 +43,26 @@ public class ItemController {
         return "client/product/detail";
     }
 
+    @GetMapping("/thank-you")
+    private String getThankYouPage(Model model) {
+        model.addAttribute("page_name", "Thankyou");
+
+        return "client/cart/thankyou";
+    }
+
+    @GetMapping("/order-history")
+    private String getOrderHistoryPage(Model model, HttpServletRequest request) {
+        User currentUser = new User();
+        HttpSession session = request.getSession(false);
+
+        long id = (long) session.getAttribute("id");
+
+        currentUser.setId(id);
+        model.addAttribute("page_name", "History");
+        model.addAttribute("orders", this.productService.getAllOrders(currentUser));
+        return "client/cart/history";
+    }
+
     @GetMapping("/cart")
     private String getCartPage(Model model, HttpServletRequest request) {
         model.addAttribute("page_name", "Cart");
@@ -130,7 +150,7 @@ public class ItemController {
         User currentUser = this.userService.getById(id);
         this.productService.handlePlaceOrder(currentUser, session, order);
 
-        return "redirect:/checkout";
+        return "redirect:/thank-you";
     }
 
 }

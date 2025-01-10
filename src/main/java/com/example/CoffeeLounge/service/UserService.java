@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.example.CoffeeLounge.domain.Role;
 import com.example.CoffeeLounge.domain.User;
 import com.example.CoffeeLounge.domain.dto.RegisterDTO;
+import com.example.CoffeeLounge.repository.OrderRepository;
+import com.example.CoffeeLounge.repository.ProductRepository;
 import com.example.CoffeeLounge.repository.RoleRepository;
 import com.example.CoffeeLounge.repository.UserRepository;
 
@@ -14,10 +16,15 @@ import com.example.CoffeeLounge.repository.UserRepository;
 public class UserService {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+    private OrderRepository orderRepository;
+    private ProductRepository productRepository;
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, OrderRepository orderRepository,
+            ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.orderRepository = orderRepository;
+        this.productRepository = productRepository;
     }
 
     public User handleSaveUser(User newUser) {
@@ -55,6 +62,18 @@ public class UserService {
 
     public User getUserByEmail(String email) {
         return this.userRepository.findByEmail(email);
+    }
+
+    public long countUser() {
+        return this.userRepository.count();
+    }
+
+    public long countProduct() {
+        return this.productRepository.count();
+    }
+
+    public long countOrders() {
+        return this.orderRepository.count();
     }
 
 }

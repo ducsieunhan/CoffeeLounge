@@ -36,76 +36,54 @@
                                 <h1 class="mt-4">Manage Orders</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Users</li>
+                                    <li class="breadcrumb-item active">Order</li>
                                 </ol>
-
-                                <div class="container mt-5">
+                                <div class="mt-5">
                                     <div class="row">
                                         <div class="col-12 mx-auto">
-                                            <div class="d-flex justify-content-between">
-                                                <h3>Table users</h3>
-                                                <a href="/admin/product/create" class="btn btn-primary">Create a
-                                                    product</a>
+                                            <div class="d-flex">
+                                                <h3>Table Orders</h3>
                                             </div>
 
                                             <hr />
-                                            <table class="table table-bordered table-hover">
+                                            <table class=" table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
-                                                        <th>Name</th>
-                                                        <th>Quantity left</th>
-                                                        <th>Amount sold</th>
+                                                        <th>Total Price</th>
+                                                        <th>User</th>
+                                                        <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var="product" items="${products}">
+                                                    <c:forEach var="order" items="${orders}">
                                                         <tr>
-                                                            <th>${product.id}</th>
-                                                            <td>${product.name}</td>
-                                                            <td>${product.quantity}</td>
-                                                            <td>${product.sold}</td>
+                                                            <th>${order.id}</th>
                                                             <td>
-                                                                <a href="/admin/product/${product.id}"
-                                                                    class="btn btn-primary">View</a>
-                                                                <a href="/admin/product/update/${product.id}"
-                                                                    class="btn btn-warning">Update</a>
-                                                                <a href="/admin/product/delete/${product.id}"
-                                                                    class="btn btn-primary">Delete</a>
+                                                                $${order.total}
+                                                            </td>
+                                                            <td>${order.user.fullName}</td>
+                                                            <td>${order.status}</td>
+                                                            <td>
+                                                                <a href="/admin/order/${order.id}"
+                                                                    class="btn btn-success">View</a>
+                                                                <a href="/admin/order/update/${order.id}"
+                                                                    class="btn btn-warning  mx-2">Update</a>
+                                                                <a href="/admin/order/delete/${order.id}"
+                                                                    class="btn btn-danger">Delete</a>
                                                             </td>
                                                         </tr>
 
                                                     </c:forEach>
+
                                                 </tbody>
                                             </table>
-
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination justify-content-center">
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Previous">
-                                                            <span aria-hidden="true">&laquo;</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link"
-                                                            href="/admin/product?page=1">1</a></li>
-                                                    <li class="page-item"><a class="page-link"
-                                                            href="/admin/product?page=2">2</a></li>
-                                                    <li class="page-item"><a class="page-link"
-                                                            href="/admin/product?page=3">3</a></li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Next">
-                                                            <span aria-hidden="true">&raquo;</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
                                         </div>
 
                                     </div>
 
                                 </div>
-
                             </div>
                         </main>
 

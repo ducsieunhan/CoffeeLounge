@@ -32,6 +32,8 @@
                                     <div class="dropdown-menu">
                                         <a href="/login" style="color: black; font-weight: bold;"
                                             class="drop-item">${sessionScope.fullName}</a>
+                                        <a href="/order-history" style="color: black; font-weight: bold;"
+                                            class="drop-item">Shopping History</a>
                                         <form method="post" action="/logout" class="drop-item">
                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                             <button class="dropdown-item" style="color: black;padding: 8px 16px; font-size: 14px;

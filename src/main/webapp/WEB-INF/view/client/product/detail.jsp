@@ -168,6 +168,7 @@
                 <jsp:include page="../layout/footer.jsp" />
 
             </body>
+            <script src="/client/js/layout.js"></script>
 
             <script src="/client/js/layout.js"></script>
 

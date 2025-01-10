@@ -89,6 +89,10 @@ public class ProductService {
         return this.cartRepository.findByUser(user);
     }
 
+    public List<Order> getAllOrders(User user) {
+        return this.orderRepository.findAllByUser(user);
+    }
+
     public void handleProductToCart(String email, long productId, HttpSession session) {
         User user = this.userService.getUserByEmail(email);
         if (user != null) {
@@ -186,7 +190,7 @@ public class ProductService {
                     OrderDetail orderDetail = new OrderDetail();
                     orderDetail.setOrder(order);
                     orderDetail.setProduct(cd.getProduct());
-                    orderDetail.setPrice((long) cd.getPrice());
+                    orderDetail.setPrice(cd.getPrice());
                     orderDetail.setQuantity(cd.getQuantity());
                     this.orderDetailRepository.save(orderDetail);
                 }
