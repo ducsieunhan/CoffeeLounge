@@ -8,7 +8,7 @@
                         <div class="page-navigation">
                             <nav class="navbar menu menu-container">
                                 <a href="/">Home</a>
-                                <a href="/product">Products</a>
+                                <a href="/shop">Products</a>
                                 <a href="actions/index.html">Blog</a>
                                 <a href="oceanguard/index.html">About</a>
                             </nav>

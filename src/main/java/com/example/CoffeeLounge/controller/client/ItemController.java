@@ -57,7 +57,8 @@ public class ItemController {
 
     @GetMapping("/shop")
     private String getShowProductPage(Model model,
-            @RequestParam("page") Optional<String> pageOptional) {
+            @RequestParam("page") Optional<String> pageOptional,
+            @RequestParam("name") Optional<String> nameOptional) {
         model.addAttribute("page_name", "Shop");
 
         int page = 1;
@@ -68,13 +69,16 @@ public class ItemController {
         } catch (Exception e) {
 
         }
+
+        String name = nameOptional.isPresent() ? nameOptional.get() : "";
         Pageable pageable = PageRequest.of(page - 1, 6);
-        Page<Product> prs = this.productService.getAllProduct(pageable);
+        Page<Product> prs = this.productService.getAllProduct(pageable, name);
         model.addAttribute("products", prs.getContent());
         model.addAttribute("categories", this.productService.getAllCategories());
         model.addAttribute("top_products", this.productService.getByTop5());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", prs.getTotalPages());
+        model.addAttribute("totalSize", prs.getTotalElements());
         return "client/product/show";
     }
 

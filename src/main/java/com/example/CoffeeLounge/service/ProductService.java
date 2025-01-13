@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import com.example.CoffeeLounge.domain.Category;
 import com.example.CoffeeLounge.domain.Order;
 import com.example.CoffeeLounge.domain.OrderDetail;
 import com.example.CoffeeLounge.domain.Product;
+import com.example.CoffeeLounge.domain.Product_;
 import com.example.CoffeeLounge.domain.Status;
 import com.example.CoffeeLounge.domain.User;
 import com.example.CoffeeLounge.repository.CartDetailRepository;
@@ -23,6 +25,7 @@ import com.example.CoffeeLounge.repository.OrderDetailRepository;
 import com.example.CoffeeLounge.repository.OrderRepository;
 import com.example.CoffeeLounge.repository.ProductRepository;
 import com.example.CoffeeLounge.repository.StatusRepository;
+import com.example.CoffeeLounge.service.specification.ProductSpecs;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -57,6 +60,10 @@ public class ProductService {
 
     public Page<Product> getAllProduct(Pageable pageable) {
         return this.productRepository.findAll(pageable);
+    }
+
+    public Page<Product> getAllProduct(Pageable pageable, String name) {
+        return this.productRepository.findAll(ProductSpecs.nameLike(name), pageable);
     }
 
     public List<Category> getAllCategories() {

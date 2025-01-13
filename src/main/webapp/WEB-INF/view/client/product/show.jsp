@@ -58,6 +58,38 @@
                                 </ul>
                             </div>
 
+                            <div class="d-flex" style="margin-top: 3rem;">
+                                <div class="sorting-type-header">
+                                    <i class="fa-solid fa-mug-hot" style="color: seagreen;"></i>
+                                    <h3>FILTER BY PRICE</h3>
+                                </div>
+
+                                <hr class="devide-part-hr" style="margin: 1.5rem 0;">
+
+                                <div class="wrapper">
+                                    <div class="slider">
+                                        <div class="progress"></div>
+                                    </div>
+                                    <div class="range-input">
+                                        <input type="range" class="range-min" min="0" max="5500" value="1000"
+                                            step="100">
+                                        <input type="range" class="range-max" min="0" max="5500" value="5500"
+                                            step="100">
+                                    </div>
+
+                                    <div class="price-input">
+                                        <div>Price:</div>
+                                        <div class="field">$
+                                            <input type="number" class="input-min" value="1000">
+                                        </div>
+                                        <div class="separator">-</div>
+                                        <div class="field">$
+                                            <input type="number" class="input-max" value="5500">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="products-top-rated">
                                 <div class="sorting-type-header">
                                     <i class="fa-solid fa-mug-hot" style="color: seagreen;"></i>
@@ -72,7 +104,7 @@
                                         <li class="cof-cate-item">
                                             <img width="480" height="480" src="/images/product/${product.image}" alt="">
                                             <div class="cof-top-price">
-                                                <a href="">${product.name}
+                                                <a href="/product/${product.id}">${product.name}
                                                 </a>
                                                 <div><span>$10.50</span> $${product.price}</div>
                                             </div>
@@ -85,7 +117,7 @@
                         </div>
                         <div class="products-display-container">
                             <div class="product-sorting-by ">
-                                <p class="product-result-count">Showing 1–6 of 50 results</p>
+                                <p class="product-result-count">Showing 1–6 of ${totalSize} results</p>
                                 <form action="" class="sorting-by">
                                     <select name="orderby" class="orderby" id="">
                                         <option value="price-asc">Sort by price: low to high</option>
@@ -150,7 +182,49 @@
 
             </body>
             <script src="/client/js/layout.js"></script>
+            <script>
+                const rangeInput = document.querySelectorAll(".range-input input"),
+                    priceInput = document.querySelectorAll(".price-input input"),
+                    range = document.querySelector(".slider .progress");
+                let priceGap = 1000;
 
-            <script src="/client/js/layout.js"></script>
+                priceInput.forEach((input) => {
+                    input.addEventListener("input", (e) => {
+                        let minPrice = parseInt(priceInput[0].value),
+                            maxPrice = parseInt(priceInput[1].value);
+
+                        if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+                            if (e.target.className === "input-min") {
+                                rangeInput[0].value = minPrice;
+                                range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+                            } else {
+                                rangeInput[1].value = maxPrice;
+                                range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+                            }
+                        }
+                    });
+                });
+
+                rangeInput.forEach((input) => {
+                    input.addEventListener("input", (e) => {
+                        let minVal = parseInt(rangeInput[0].value),
+                            maxVal = parseInt(rangeInput[1].value);
+
+                        if (maxVal - minVal < priceGap) {
+                            if (e.target.className === "range-min") {
+                                rangeInput[0].value = maxVal - priceGap;
+                            } else {
+                                rangeInput[1].value = minVal + priceGap;
+                            }
+                        } else {
+                            priceInput[0].value = minVal;
+                            priceInput[1].value = maxVal;
+                            range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                            range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                        }
+                    });
+                });
+
+            </script>
 
             </html>
