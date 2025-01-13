@@ -3,6 +3,8 @@ package com.example.CoffeeLounge.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,6 +55,10 @@ public class ProductService {
         return this.productRepository.findAll();
     }
 
+    public Page<Product> getAllProduct(Pageable pageable) {
+        return this.productRepository.findAll(pageable);
+    }
+
     public List<Category> getAllCategories() {
         return this.categoryRepository.findAll();
     }
@@ -91,6 +97,10 @@ public class ProductService {
 
     public List<Order> getAllOrders(User user) {
         return this.orderRepository.findAllByUser(user);
+    }
+
+    public List<Product> getByTop5() {
+        return this.productRepository.findTop5ByOrderBySoldAsc();
     }
 
     public void handleProductToCart(String email, long productId, HttpSession session) {

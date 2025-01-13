@@ -3,6 +3,8 @@ package com.example.CoffeeLounge.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.CoffeeLounge.domain.Order;
@@ -24,6 +26,10 @@ public class OrderService {
 
     public List<Order> fetchAllOrders() {
         return this.orderRepository.findAll();
+    }
+
+    public Page<Order> fetchAllOrders(Pageable pageable) {
+        return this.orderRepository.findAll(pageable);
     }
 
     public Optional<Order> fetchOrderById(long id) {

@@ -3,7 +3,7 @@
   --dark-color: #31393C;
   --medium-color: #D5B9B2;
   --medium-light-color: #BFB5AF;
-  --light-color: #fff5e3;
+  --light-color: #EFECE5;
   --hight-light-text: #ef4444;
   --font-family-display: "Playfair Display", serif, Arial, sans-serif;
   --font-family-desc: "Hind Mysuru", sans-serif;
@@ -341,6 +341,47 @@ ul.breadcrumb li a:hover {
   color: black;
   font-weight: bolder;
   text-decoration: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.pagination .page-item {
+  margin: 0 0.25rem;
+}
+.pagination .page-item .page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: var(--light-color);
+  transition: all 0.3s ease;
+}
+.pagination .page-item .page-link:hover {
+  background-color: var(--dark-color);
+  color: #fff;
+}
+.pagination .page-item .page-link.disabled {
+  color: #6c757d;
+  background-color: #f8f9fa;
+  border-color: #ddd;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.pagination .page-item .page-link.active {
+  color: #fff;
+  background-color: #4D8B55;
+  pointer-events: none;
 }
 
 .product-detail-container .pro-dt-wrapper {

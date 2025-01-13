@@ -1,7 +1,11 @@
 package com.example.CoffeeLounge.controller.admin;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.CoffeeLounge.domain.Product;
 import com.example.CoffeeLounge.domain.User;
 import com.example.CoffeeLounge.service.UserService;
 
@@ -30,11 +36,22 @@ public class UserController {
     }
 
     @GetMapping("/admin/user")
-    public String getUserPage(Model model) {
-        model.addAttribute("page_name", "User list");
+    public String getUserPage(Model model, @RequestParam("page") Optional<String> pageOptional) {
+        int page = 1;
 
-        List<User> users = this.userService.getAllUsers();
-        model.addAttribute("users", users);
+        try {
+            if (pageOptional.isPresent()) {
+                page = Integer.parseInt(pageOptional.get());
+            }
+        } catch (Exception e) {
+
+        }
+
+        Pageable pageable = PageRequest.of(page - 1, 5);
+        Page<User> prs = this.userService.getAllUsers(pageable);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", prs.getTotalPages());
+        model.addAttribute("users", prs.getContent());
 
         return "admin/user/show";
     }
