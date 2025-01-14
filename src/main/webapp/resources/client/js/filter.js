@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     $('.filterBtn').each(function () {
         $(this).click(function (event) {
+            event.preventDefault();
+
             let filterUrl = $(this).text().trim();
 
             const currentUrl = new URL(window.location.href);
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchParams = currentUrl.searchParams;
 
         searchParams.set('page', '1');
-        searchParams.set('orderby', orderbyUrl);
+        searchParams.set('sort', orderbyUrl);
         window.location.href = currentUrl.toString();
 
     });

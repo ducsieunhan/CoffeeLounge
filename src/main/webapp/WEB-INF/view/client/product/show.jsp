@@ -133,15 +133,18 @@
 
                             <div class="products-container">
                                 <ul class="products">
+                                    <c:if test="${totalPages ==  0}">
+                                        <div>Không tìm thấy sản phẩm</div>
+                                    </c:if>
                                     <c:forEach var="product" items="${products}">
                                         <li class="product-item">
                                             <div class="lte-item">
                                                 <div class="lte-image">
-                                                    <a href="/product/{$product.id}">
+                                                    <a href="/product/${product.id}">
                                                         <img width="480" height="480"
                                                             src="/images/product/${product.image}" alt="">
                                                     </a>
-                                                    <button class="show-more-btn"><a href="/product/{$product.id}">Read
+                                                    <button class="show-more-btn"><a href="/product/${product.id}">Read
                                                             More</a></button>
                                                 </div>
                                                 <div class="lte-image-desc">
@@ -160,19 +163,19 @@
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item">
                                         <a class="${1 eq currentPage ? 'page-link disabled' : 'page-link'} "
-                                            href="/shop?page=${currentPage-1}" aria-label="Previous">
+                                            href="/shop?page=${currentPage-1}${queryString}" aria-label="Previous">
                                             <span class="fa-solid fa-angle-left" aria-hidden="true"></span>
                                         </a>
                                     </li>
                                     <c:forEach begin="0" end="${totalPages-1}" varStatus="loop">
                                         <li class="page-item"><a
                                                 class="${(loop.index+1) eq currentPage ? 'page-link active' : 'page-link'} "
-                                                href="/shop?page=${loop.index+1}">${loop.index+1}</a>
+                                                href="/shop?page=${loop.index+1}${queryString}">${loop.index+1}</a>
                                         </li>
                                     </c:forEach>
                                     <li class="page-item">
                                         <a class="${currentPage eq totalPages ? 'page-link disabled' : 'page-link'} "
-                                            href="/shop?page=${currentPage+1}" aria-label="Next">
+                                            href="/shop?page=${currentPage+1}${queryString}" aria-label="Next">
                                             <span class="fa-solid fa-angle-right" aria-hidden="true"></span>
                                         </a>
                                     </li>

@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +20,9 @@ import com.example.CoffeeLounge.domain.Cart;
 import com.example.CoffeeLounge.domain.CartDetail;
 import com.example.CoffeeLounge.domain.Order;
 import com.example.CoffeeLounge.domain.Product;
+import com.example.CoffeeLounge.domain.Product_;
 import com.example.CoffeeLounge.domain.User;
+import com.example.CoffeeLounge.domain.dto.ProductCriteriaDTO;
 import com.example.CoffeeLounge.service.ProductService;
 import com.example.CoffeeLounge.service.UserService;
 
@@ -28,8 +31,6 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ItemController {
@@ -56,30 +57,50 @@ public class ItemController {
     }
 
     @GetMapping("/shop")
-    private String getShowProductPage(Model model,
-            @RequestParam("page") Optional<String> pageOptional,
-            @RequestParam("name") Optional<String> nameOptional,
-            @RequestParam("category") Optional<String> categoryOptional) {
+    private String getShowProductPage(Model model, ProductCriteriaDTO productCriteriaDTO,
+            HttpServletRequest request) {
         model.addAttribute("page_name", "Shop");
 
         int page = 1;
         try {
-            if (pageOptional.isPresent()) {
-                page = Integer.parseInt(pageOptional.get());
+            if (productCriteriaDTO.getPage().isPresent()) {
+                page = Integer.parseInt(productCriteriaDTO.getPage().get());
             }
         } catch (Exception e) {
 
         }
-
-        String category = categoryOptional.isPresent() ? categoryOptional.get() : "";
+        String test = request.getQueryString();
         Pageable pageable = PageRequest.of(page - 1, 6);
-        Page<Product> prs = this.productService.getProductByCategory(pageable, category);
-        model.addAttribute("products", prs.getContent());
+
+        if (productCriteriaDTO.getSort() != null && productCriteriaDTO.getSort().isPresent()) {
+            String sort = productCriteriaDTO.getSort().get();
+            if (sort.equals("price-asc")) {
+                pageable = PageRequest.of(page - 1, 6, Sort.by(Product_.PRICE).ascending());
+            } else if (sort.equals("price-desc")) {
+                pageable = PageRequest.of(page - 1, 6, Sort.by(Product_.PRICE).descending());
+            }
+        }
+
+        Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, productCriteriaDTO);
+
+        List<Product> products = prs.getContent().size() > 0 ? prs.getContent()
+                : new ArrayList<Product>();
+
+        String qs = request.getQueryString();
+        if (qs != null && !qs.isBlank()) {
+            // remove page
+            qs = qs.replace("page=" + page, "");
+        }
+
+        model.addAttribute("products", products);
+
         model.addAttribute("categories", this.productService.getAllCategories());
         model.addAttribute("top_products", this.productService.getByTop5());
         model.addAttribute("currentPage", page);
+
         model.addAttribute("totalPages", prs.getTotalPages());
         model.addAttribute("totalSize", prs.getTotalElements());
+        model.addAttribute("queryString", qs);
         return "client/product/show";
     }
 

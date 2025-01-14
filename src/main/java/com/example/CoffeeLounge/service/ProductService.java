@@ -18,6 +18,7 @@ import com.example.CoffeeLounge.domain.Product;
 import com.example.CoffeeLounge.domain.Product_;
 import com.example.CoffeeLounge.domain.Status;
 import com.example.CoffeeLounge.domain.User;
+import com.example.CoffeeLounge.domain.dto.ProductCriteriaDTO;
 import com.example.CoffeeLounge.repository.CartDetailRepository;
 import com.example.CoffeeLounge.repository.CartRepository;
 import com.example.CoffeeLounge.repository.CategoryRepository;
@@ -71,11 +72,35 @@ public class ProductService {
                 pageable);
     }
 
-    // public Page<Product> getAllProduct(Pageable pageable, double min, double max)
-    // {
-    // return this.productRepository.findAll(ProductSpecs.priceIn(min, max),
-    // pageable);
-    // }
+    public Page<Product> fetchProductsWithSpec(Pageable page, ProductCriteriaDTO productCriteriaDTO) {
+        if (productCriteriaDTO.getCategory() == null && productCriteriaDTO.getName() == null
+                && (productCriteriaDTO.getMin() == null && productCriteriaDTO.getMax() == null)) {
+            return this.productRepository.findAll(page);
+        }
+
+        Specification<Product> combinedSpec = Specification.where(null);
+
+        if (productCriteriaDTO.getCategory() != null && productCriteriaDTO.getCategory().isPresent()) {
+            Specification<Product> currentSpecs = ProductSpecs.categoryName(productCriteriaDTO.getCategory().get());
+            combinedSpec = combinedSpec.and(currentSpecs);
+        }
+        if (productCriteriaDTO.getName() != null && productCriteriaDTO.getName().isPresent()) {
+            Specification<Product> currentSpecs = ProductSpecs.nameLike(productCriteriaDTO.getName().get());
+            combinedSpec = combinedSpec.and(currentSpecs);
+        }
+
+        if (productCriteriaDTO.getMin() != null && productCriteriaDTO.getMin().isPresent() &&
+                productCriteriaDTO.getMax() != null && productCriteriaDTO.getMax().isPresent()) {
+            double minVal = Double.parseDouble(productCriteriaDTO.getMin().get());
+            double maxVal = Double.parseDouble(productCriteriaDTO.getMax().get());
+
+            Specification<Product> currentSpecs = ProductSpecs.priceIn(minVal, maxVal);
+            combinedSpec = combinedSpec.and(currentSpecs);
+        }
+
+        return this.productRepository.findAll(combinedSpec, page);
+
+    }
 
     public List<Category> getAllCategories() {
         return this.categoryRepository.findAll();
