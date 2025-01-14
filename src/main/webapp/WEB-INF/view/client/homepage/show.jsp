@@ -546,7 +546,8 @@
                                                         style="display: flex; justify-content: center;">
                                                         <del style="color: gray; height: 0.5px; margin-right: 10px;">
                                                             <h4 style="color: gray !important;"><span
-                                                                    style="color: gray !important;">$</span>${product.price}
+                                                                    style="color: gray !important;">$</span>${product.price
+                                                                + 1.0}
                                                             </h4>
                                                         </del>
                                                         <h4 style="color: red !important;"><span

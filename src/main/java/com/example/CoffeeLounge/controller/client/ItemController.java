@@ -31,6 +31,8 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class ItemController {
@@ -69,7 +71,6 @@ public class ItemController {
         } catch (Exception e) {
 
         }
-        String test = request.getQueryString();
         Pageable pageable = PageRequest.of(page - 1, 6);
 
         if (productCriteriaDTO.getSort() != null && productCriteriaDTO.getSort().isPresent()) {
@@ -168,11 +169,15 @@ public class ItemController {
     }
 
     @PostMapping("/add-product-to-cart/{id}")
-    public String addProductToCart(@PathVariable long id, HttpServletRequest request) {
+    public String addProductToCart(@PathVariable long id, HttpServletRequest request,
+            @RequestParam(value = "quantity", required = false) Integer quantity) {
         HttpSession session = request.getSession(false);
         String email = (String) session.getAttribute("email");
-
-        this.productService.handleProductToCart(email, id, session);
+        if (quantity == null) {
+            this.productService.handleProductToCart(email, id, session, 1);
+        } else {
+            this.productService.handleProductToCart(email, id, session, quantity);
+        }
         return "redirect:/";
     }
 

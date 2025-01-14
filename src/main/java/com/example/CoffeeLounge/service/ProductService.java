@@ -146,7 +146,7 @@ public class ProductService {
         return this.productRepository.findTop5ByOrderBySoldAsc();
     }
 
-    public void handleProductToCart(String email, long productId, HttpSession session) {
+    public void handleProductToCart(String email, long productId, HttpSession session, int quantity) {
         User user = this.userService.getUserByEmail(email);
         if (user != null) {
             Cart cart = this.cartRepository.findByUser(user);
@@ -168,7 +168,7 @@ public class ProductService {
 
             if (realProduct != null) {
                 if (cartExist != null) {
-                    cartExist.setQuantity(cartExist.getQuantity() + 1);
+                    cartExist.setQuantity(cartExist.getQuantity() + quantity);
                     cartExist.setPrice(realProduct.getPrice());
                     this.cartDetailRepository.save(cartExist);
                 } else {
@@ -176,7 +176,7 @@ public class ProductService {
                     cd.setCart(cart);
                     cd.setProduct(realProduct);
                     cd.setPrice(realProduct.getPrice());
-                    cd.setQuantity(1);
+                    cd.setQuantity(quantity);
                     this.cartDetailRepository.save(cd);
 
                     int s = cart.getSum() + 1;

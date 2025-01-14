@@ -315,7 +315,7 @@ ul.breadcrumb li a:hover {
   background-color: seagreen;
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 30px;
   cursor: pointer;
   opacity: 0;
   transition: 0.3s all ease;
@@ -335,12 +335,28 @@ ul.breadcrumb li a:hover {
 .products-container .products-column .products-display-container .products-container .products .product-item .lte-item .lte-image:hover .show-more-btn {
   opacity: 1;
 }
+.products-container .products-column .products-display-container .products-container .products .product-item .lte-item .lte-image-desc {
+  margin-top: 10px;
+}
 .products-container .products-column .products-display-container .products-container .products .product-item .lte-item .lte-image-desc a {
   font-family: var(--font-family-desc);
   font-size: 11px;
   color: black;
   font-weight: bolder;
   text-decoration: none;
+}
+
+.lte-price {
+  font-weight: bolder;
+  font-size: 18px;
+  color: #ef4444;
+  margin-top: 10px;
+}
+.lte-price span {
+  text-decoration: line-through;
+  color: #6c757d;
+  margin-right: 10px;
+  opacity: 0.6;
 }
 
 .pagination {
@@ -446,26 +462,11 @@ ul.breadcrumb li a:hover {
   cursor: pointer;
   color: white;
 }
-.product-detail-container .pro-dt-wrapper .product-dt-desc .cart input[type=number]::-webkit-inner-spin-button:hover,
-.product-detail-container .pro-dt-wrapper .product-dt-desc .cart input[type=number]::-webkit-outer-spin-button:hover {
-  background: #000;
-}
-.product-detail-container .pro-dt-wrapper .product-dt-desc .cart input[type=number] {
-  -moz-appearance: textfield;
-}
-.product-detail-container .pro-dt-wrapper .product-dt-desc .cart input[type=number]::-moz-inner-spin-button {
-  display: block;
-  background: #4D8B55;
-  border: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
 .product-detail-container .pro-dt-wrapper .product-dt-desc .cart .cart-btn {
   background-color: #4D8B55;
   padding: 10px 40px;
   border-radius: 30px;
+  border: none;
   color: var(--light-text);
   font-size: 20px;
   font-weight: bolder;
@@ -474,6 +475,7 @@ ul.breadcrumb li a:hover {
   align-items: center;
   justify-content: center;
   transition: 0.3s all;
+  cursor: pointer;
 }
 .product-detail-container .pro-dt-wrapper .product-dt-desc .cart .cart-btn:hover {
   background-color: #000;
@@ -615,23 +617,24 @@ header p {
 .price-input .field input {
   width: 45px;
   font-size: 14px;
-  text-align: center;
+  text-align: start;
   border: none;
   border-radius: 4px;
   transition: border-color 0.3s ease;
   font-size: 18px;
   font-weight: bolder;
 }
+.price-input .field input[type=number]::-webkit-inner-spin-button,
+.price-input .field input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
 .price-input .separator {
   font-size: 25px;
   font-weight: bolder;
   color: #000;
   content: "—";
-}
-
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
 }
 
 .slider {

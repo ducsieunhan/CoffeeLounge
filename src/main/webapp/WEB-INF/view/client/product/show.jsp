@@ -59,7 +59,7 @@
                                 </ul>
                             </div>
 
-                            <div class="d-flex" style="margin-top: 3rem;">
+                            <div class="d-flex" style="margin-top: 3rem; display: flex; flex-direction: column;">
                                 <div class="sorting-type-header">
                                     <i class="fa-solid fa-mug-hot" style="color: seagreen;"></i>
                                     <h3>FILTER BY PRICE</h3>
@@ -109,7 +109,7 @@
                                             <div class="cof-top-price">
                                                 <a href="/product/${product.id}">${product.name}
                                                 </a>
-                                                <div><span>$10.50</span> $${product.price}</div>
+                                                <div><span>$${product.price + 1.0}</span> $${product.price}</div>
                                             </div>
                                         </li>
 
@@ -134,7 +134,8 @@
                             <div class="products-container">
                                 <ul class="products">
                                     <c:if test="${totalPages ==  0}">
-                                        <div>Không tìm thấy sản phẩm</div>
+                                        <div style="font-weight: bold;">No products were found matching your selection.
+                                        </div>
                                     </c:if>
                                     <c:forEach var="product" items="${products}">
                                         <li class="product-item">
@@ -151,6 +152,8 @@
                                                     <a href="">
                                                         <h2>${product.name}</h2>
                                                     </a>
+                                                    <div class="lte-price"><span>$${product.price + 1.0}</span>
+                                                        $${product.price}</div>
                                                 </div>
                                             </div>
                                         </li>
@@ -160,26 +163,28 @@
                             </div>
 
                             <nav aria-label="products-pagination">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item">
-                                        <a class="${1 eq currentPage ? 'page-link disabled' : 'page-link'} "
-                                            href="/shop?page=${currentPage-1}${queryString}" aria-label="Previous">
-                                            <span class="fa-solid fa-angle-left" aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                    <c:forEach begin="0" end="${totalPages-1}" varStatus="loop">
-                                        <li class="page-item"><a
-                                                class="${(loop.index+1) eq currentPage ? 'page-link active' : 'page-link'} "
-                                                href="/shop?page=${loop.index+1}${queryString}">${loop.index+1}</a>
+                                <c:if test="${totalPages > 0}">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item">
+                                            <a class="${1 eq currentPage ? 'page-link disabled' : 'page-link'} "
+                                                href="/shop?page=${currentPage-1}${queryString}" aria-label="Previous">
+                                                <span class="fa-solid fa-angle-left" aria-hidden="true"></span>
+                                            </a>
                                         </li>
-                                    </c:forEach>
-                                    <li class="page-item">
-                                        <a class="${currentPage eq totalPages ? 'page-link disabled' : 'page-link'} "
-                                            href="/shop?page=${currentPage+1}${queryString}" aria-label="Next">
-                                            <span class="fa-solid fa-angle-right" aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                        <c:forEach begin="0" end="${totalPages-1}" varStatus="loop">
+                                            <li class="page-item"><a
+                                                    class="${(loop.index+1) eq currentPage ? 'page-link active' : 'page-link'} "
+                                                    href="/shop?page=${loop.index+1}${queryString}">${loop.index+1}</a>
+                                            </li>
+                                        </c:forEach>
+                                        <li class="page-item">
+                                            <a class="${currentPage eq totalPages ? 'page-link disabled' : 'page-link'} "
+                                                href="/shop?page=${currentPage+1}${queryString}" aria-label="Next">
+                                                <span class="fa-solid fa-angle-right" aria-hidden="true"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </c:if>
                             </nav>
                         </div>
                     </div>

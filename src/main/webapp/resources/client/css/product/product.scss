@@ -340,7 +340,7 @@ ul.breadcrumb li a:hover {
                                     background-color: seagreen;
                                     color: white;
                                     border: none;
-                                    border-radius: 20px;
+                                    border-radius: 30px;
                                     cursor: pointer;
                                     opacity: 0;
                                     transition: 0.3s all ease;
@@ -368,9 +368,15 @@ ul.breadcrumb li a:hover {
                                 }
                             }
 
-                            .lte-image-desc a {
-                                @include font-adjust($size: 11px, $weight: bolder);
-                                text-decoration: none;
+                            .lte-image-desc {
+                                margin-top: 10px;
+
+                                a {
+                                    @include font-adjust($size: 11px, $weight: bolder);
+                                    text-decoration: none;
+                                }
+
+
                             }
 
 
@@ -383,6 +389,20 @@ ul.breadcrumb li a:hover {
 
 
         }
+    }
+}
+
+.lte-price {
+    font-weight: bolder;
+    font-size: 18px;
+    color: #ef4444;
+    margin-top: 10px;
+
+    span {
+        text-decoration: line-through;
+        color: #6c757d;
+        margin-right: 10px;
+        opacity: 0.6;
     }
 }
 
@@ -492,35 +512,37 @@ ul.breadcrumb li a:hover {
                 }
 
                 /* Hover state */
-                input[type="number"]::-webkit-inner-spin-button:hover,
-                input[type="number"]::-webkit-outer-spin-button:hover {
-                    background: #000;
-                }
+                // input[type="number"]::-webkit-inner-spin-button:hover,
+                // input[type="number"]::-webkit-outer-spin-button:hover {
+                //     background: #000;
+                // }
 
                 /* Firefox specific styles */
-                input[type="number"] {
-                    -moz-appearance: textfield;
-                }
+                // input[type="number"] {
+                //     -moz-appearance: textfield;
+                // }
 
-                input[type="number"]::-moz-inner-spin-button {
-                    display: block;
-                    background: #4D8B55;
-                    border: none;
-                    border-radius: 50%;
-                    width: 20px;
-                    height: 20px;
-                    cursor: pointer;
-                }
+                // input[type="number"]::-moz-inner-spin-button {
+                //     display: block;
+                //     background: #4D8B55;
+                //     border: none;
+                //     border-radius: 50%;
+                //     width: 20px;
+                //     height: 20px;
+                //     cursor: pointer;
+                // }
 
                 .cart-btn {
                     background-color: #4D8B55;
                     padding: 10px 40px;
                     border-radius: 30px;
+                    border: none;
                     color: var(--light-text);
                     font-size: 20px;
                     font-weight: bolder;
                     @include flex-container();
                     transition: 0.3s all;
+                    cursor: pointer;
 
                     &:hover {
                         background-color: #000;
@@ -693,13 +715,20 @@ header p {
         input {
             width: 45px; // Đặt chiều rộng cố định cho input
             font-size: 14px;
-            text-align: center;
+            text-align: start;
             border: none;
             border-radius: 4px;
             transition: border-color 0.3s ease;
             font-size: 18px;
             font-weight: bolder;
 
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
         }
     }
 
@@ -712,11 +741,6 @@ header p {
 }
 
 
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
 
 .slider {
     height: 7px;

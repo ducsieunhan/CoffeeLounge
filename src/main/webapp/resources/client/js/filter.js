@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const currentUrl = new URL(window.location.href);
-    const selectedOrder = currentUrl.searchParams.get('orderby');
+    const selectedOrder = currentUrl.searchParams.get('sort');
 
     if (selectedOrder) {
         $('#orderby').val(selectedOrder);
