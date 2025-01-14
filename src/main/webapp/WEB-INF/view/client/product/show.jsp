@@ -52,7 +52,8 @@
                                 <ul class="products-categories">
                                     <c:forEach var="category" items="${categories}">
 
-                                        <li class="cof-cate-item"><a href="">${category.name}</a></li>
+                                        <li class="cof-cate-item"><a style="cursor: pointer;" class="filterBtn"
+                                                value="${category.name}" name="category">${category.name}</a></li>
 
                                     </c:forEach>
                                 </ul>
@@ -182,6 +183,9 @@
 
             </body>
             <script src="/client/js/layout.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            <script src="/client/js/filter.js"></script>
+
             <script>
                 const rangeInput = document.querySelectorAll(".range-input input"),
                     priceInput = document.querySelectorAll(".price-input input"),

@@ -66,6 +66,17 @@ public class ProductService {
         return this.productRepository.findAll(ProductSpecs.nameLike(name), pageable);
     }
 
+    public Page<Product> getProductByCategory(Pageable pageable, String category) {
+        return this.productRepository.findAll(ProductSpecs.categoryName(category),
+                pageable);
+    }
+
+    // public Page<Product> getAllProduct(Pageable pageable, double min, double max)
+    // {
+    // return this.productRepository.findAll(ProductSpecs.priceIn(min, max),
+    // pageable);
+    // }
+
     public List<Category> getAllCategories() {
         return this.categoryRepository.findAll();
     }

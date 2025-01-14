@@ -294,7 +294,7 @@ ul.breadcrumb li a:hover {
 
             .products-container {
                 .products {
-                    @include flex-container($direction: row, $gap: 10px, $justify: space-between);
+                    @include flex-container($direction: row, $gap: 10px, $justify: start);
                     flex-wrap: wrap;
                     list-style: none;
                     gap: 20px;

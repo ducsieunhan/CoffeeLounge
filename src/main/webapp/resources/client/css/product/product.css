@@ -272,7 +272,7 @@ ul.breadcrumb li a:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   gap: 10px;
   flex-wrap: wrap;
   list-style: none;
