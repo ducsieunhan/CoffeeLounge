@@ -674,6 +674,7 @@ input[type=range]::-webkit-slider-thumb {
   pointer-events: auto;
   -webkit-appearance: none;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  cursor: ew-resize;
 }
 
 input[type=range]::-moz-range-thumb {
@@ -685,4 +686,21 @@ input[type=range]::-moz-range-thumb {
   pointer-events: auto;
   -moz-appearance: none;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.priceBtn {
+  padding: 12px 65px;
+  background-color: seagreen;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s all ease;
+  font-weight: bold;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+}
+.priceBtn:hover {
+  background-color: var(--dark-color);
 }/*# sourceMappingURL=product.css.map */

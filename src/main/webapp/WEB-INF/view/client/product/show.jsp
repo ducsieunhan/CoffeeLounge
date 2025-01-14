@@ -37,7 +37,7 @@
                                 <form action="" class="products-search">
                                     <input type="search" class="search-field" placeholder="Search products...">
                                     <button type="submit" class="search-btn"><i
-                                            class="fa-solid fa-magnifying-glass"></i></button>
+                                            class="fa-solid fa-magnifying-glass searchBtn"></i></button>
                                 </form>
                             </div>
 
@@ -88,6 +88,8 @@
                                             <input type="number" class="input-max" value="5500">
                                         </div>
                                     </div>
+
+                                    <button class="priceBtn" id="priceBtn">Filter</button>
                                 </div>
                             </div>
 
@@ -120,9 +122,11 @@
                             <div class="product-sorting-by ">
                                 <p class="product-result-count">Showing 1–6 of ${totalSize} results</p>
                                 <form action="" class="sorting-by">
-                                    <select name="orderby" class="orderby" id="">
-                                        <option value="price-asc">Sort by price: low to high</option>
-                                        <option value="price-desc">Sort by price: hight to low</option>
+                                    <select name="orderby" class="orderby" id="orderby">
+                                        <option value="price-asc">Sort by price: low to high
+                                        </option>
+                                        <option value="price-desc">Sort by price: hight to low
+                                        </option>
                                     </select>
                                 </form>
                             </div>
