@@ -352,6 +352,8 @@ ul.breadcrumb li a:hover {
                                     }
                                 }
 
+
+
                                 a {
                                     color: var(--light-text);
                                     text-decoration: none;
@@ -389,6 +391,26 @@ ul.breadcrumb li a:hover {
 
 
         }
+    }
+}
+
+
+.lte-img-sale {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    color: var(--light-text);
+    @include flex-container();
+
+    span {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 

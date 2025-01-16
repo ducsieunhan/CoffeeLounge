@@ -979,4 +979,18 @@
 }
 .news-section .news-wrapper .coffee-news .coffee-content a:hover {
   color: #4D8B55;
+}
+
+.sale-icon {
+  background-color: #ef4444 !important;
+  color: var(--light-text) !important;
+  font-size: smaller !important;
+  position: relative;
+}
+.sale-icon span {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
 }/*# sourceMappingURL=homepage.css.map */

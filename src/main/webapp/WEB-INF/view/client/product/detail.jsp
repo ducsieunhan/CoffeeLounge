@@ -44,8 +44,12 @@
 
                     <section class="product-detail-container">
                         <div class="pro-dt-wrapper width-container">
-                            <div class="product-dt-img pro-dt">
+                            <div class="product-dt-img pro-dt" style="position: relative;">
                                 <img width="600" height="600" src="/images/product/${product.image}" alt="">
+                                <c:if test="${(product.status.name).equals('Sale')}">
+                                    <div class="lte-img-sale" style="left: 15px !important; top: 0;"><span>sale</span>
+                                    </div>
+                                </c:if>
                             </div>
                             <div class="product-dt-desc pro-dt">
                                 <div class="pro-dt-header">

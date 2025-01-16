@@ -145,11 +145,14 @@
                                                         <img width="480" height="480"
                                                             src="/images/product/${product.image}" alt="">
                                                     </a>
+                                                    <c:if test="${(product.status.name).equals('Sale')}">
+                                                        <div class="lte-img-sale"><span>sale</span></div>
+                                                    </c:if>
                                                     <button class="show-more-btn"><a href="/product/${product.id}">Read
                                                             More</a></button>
                                                 </div>
                                                 <div class="lte-image-desc">
-                                                    <a href="">
+                                                    <a href="/product/${product.id}">
                                                         <h2>${product.name}</h2>
                                                     </a>
                                                     <div class="lte-price"><span>$${product.price + 1.0}</span>

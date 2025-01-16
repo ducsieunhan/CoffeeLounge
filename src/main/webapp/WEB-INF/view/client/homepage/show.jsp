@@ -522,8 +522,8 @@
                                                             alt="">
                                                     </a>
                                                     <div class="product-action">
-                                                        <a class="fa-regular fa-star rounded-highlight icon-tooltip icon-display-left"
-                                                            data-message="Add to Favorites"></a>
+                                                        <a class="sale-icon"
+                                                            data-message="Add to Favorites"><span>Sale</span></a>
                                                     </div>
                                                     <div class="product-actions">
                                                         <form class="" action="/add-product-to-cart/${product.id}"
@@ -536,7 +536,8 @@
                                                                 style="border: none; cursor: pointer;"></button>
                                                         </form>
 
-                                                        <a class="a-action fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
+                                                        <a href="/product/${product.id}" style="text-decoration: none;"
+                                                            class="a-action fa-regular fa-eye rounded-highlight icon-tooltip icon-display-up"
                                                             data-message="View Details"></a>
                                                     </div>
                                                 </div>

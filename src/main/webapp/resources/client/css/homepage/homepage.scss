@@ -1598,3 +1598,18 @@
         }
     }
 }
+
+.sale-icon {
+    background-color: #ef4444 !important;
+    color: var(--light-text) !important;
+    font-size: smaller !important;
+    position: relative;
+
+    span {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+    }
+}
